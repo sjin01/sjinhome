@@ -39,6 +39,6 @@
 
     </dependencies>
     <build>
-        <finalName>jfinal02-web</finalName>
+        <finalName>sjinhome-web</finalName>
     </build>
 </project>

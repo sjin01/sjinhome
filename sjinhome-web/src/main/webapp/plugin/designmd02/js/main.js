@@ -64,7 +64,7 @@ $(document).ready(function(){
     
     
     //FOOTER FLICKR
-    $('#footer .flickr').jflickrfeed({
+    /*$('#footer .flickr').jflickrfeed({
 		limit: 6,
 		qstrings: {
 			id: '99771506@N00'
@@ -82,7 +82,7 @@ $(document).ready(function(){
         }, function() {
     	   $(this).find("img").stop(true, true).animate({ opacity: 1.0 }, 800);
         });
-	});
+	});*/
 
 
 	//SIDEBAR FLICKR
