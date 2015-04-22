@@ -6,7 +6,6 @@ import com.jfinal.plugin.activerecord.Record;
 import java.util.List;
 
 /**
- * Title :盛通-- 临澧教育局平台
  * Description:  测试自定义sql  和查询字段
  * 创建日期: 4/1  16:39
  *
