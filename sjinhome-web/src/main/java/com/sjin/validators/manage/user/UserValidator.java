@@ -2,7 +2,7 @@ package com.sjin.validators.manage.user;
 
 import com.jfinal.core.Controller;
 import com.jfinal.validate.Validator;
-import com.sjin.model.manage.user.User;
+import com.sjin.model.manage.User;
 
 /**
  * Description: 后台验证 用户表

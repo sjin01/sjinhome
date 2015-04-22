@@ -3,7 +3,7 @@ package com.sjin.base;
 import com.jfinal.config.*;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
-import com.sjin.model.manage.user.User;
+import com.sjin.model.manage.*;
 
 /**
  * Description: API引导式配置
@@ -44,7 +44,13 @@ public class BaseConfig extends JFinalConfig {
         plugins.add(arp);
 
         // 映射 DB table 表到 model
+        arp.addMapping("t_sys_dict", Dict.class);
+        arp.addMapping("t_sys_func", Func.class);
+        arp.addMapping("t_sys_role", Role.class);
+        arp.addMapping("t_sys_role_func", RoleFunc.class);
         arp.addMapping("t_sys_user", User.class);
+        arp.addMapping("t_sys_user_group", UserGroup.class);
+        arp.addMapping("t_sys_user_role", UserRole.class);
     }
 
     /**
