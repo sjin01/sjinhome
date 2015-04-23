@@ -5,7 +5,7 @@
     <title>用户管理</title>
 </head>
 <body>
-
+<#--<#include "/manage/common/_head.html" />-->
 <a href="${base}/manage/user/add">添加</a>
 
 <table class="list">
@@ -31,7 +31,7 @@
 
     </tbody>
 </table>
-<#include "../common/_paginate.html" />
+<#include "/manage/common/_paginate.html" />
 <@paginate currentPage = userpage.pageNumber totalPage = userpage.totalPage actionUrl = "${base}/manage/user" />
 
 </body>

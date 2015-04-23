@@ -1,4 +1,4 @@
-package com.sjin.controllers.manage.user;
+package com.sjin.controllers.manage;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;

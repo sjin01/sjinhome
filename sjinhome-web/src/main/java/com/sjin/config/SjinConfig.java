@@ -6,7 +6,9 @@ import com.jfinal.render.FreeMarkerRender;
 import com.jfinal.render.ViewType;
 import com.sjin.base.BaseConfig;
 import com.sjin.controllers.index.IndexController;
-import com.sjin.controllers.manage.user.UsersController;
+import com.sjin.controllers.manage.LoginController;
+import com.sjin.controllers.manage.ManageIndexController;
+import com.sjin.controllers.manage.UsersController;
 import freemarker.template.TemplateModelException;
 
 import javax.servlet.ServletContext;
@@ -35,8 +37,13 @@ public class SjinConfig extends BaseConfig {
     @Override
     public void configRoute(Routes routes) {
         super.configRoute(routes);
-        routes.add("/manage/user", UsersController.class);
+        // 前台
         routes.add("/", IndexController.class);
+
+        // 后台 manage
+        routes.add("/manage/login", LoginController.class);
+        routes.add("/manage/main", ManageIndexController.class);
+        routes.add("/manage/user", UsersController.class);
     }
 
     /**
