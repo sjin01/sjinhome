@@ -3,6 +3,8 @@ package com.sjin.model.manage;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 
+import java.util.List;
+
 /**
  * 用户
  * 数据库名 t_sys_user
@@ -29,5 +31,18 @@ public class User extends Model<User> {
      */
     public Page<User> paginate(int pageNumber, int pageSize) {
         return paginate(pageNumber, pageSize, "select * " , " from t_sys_user order by registerdate,id desc");
+    }
+
+    /* 登陆方法 true 成功*/
+    public boolean login (String username , String password){
+
+        if(username.isEmpty() || password.isEmpty()) return false;
+
+        List<User> list = User.dao.find("select * from t_sys_user where username ='" + username + "' and password ='" + password+"' ");
+        if(list == null || list.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

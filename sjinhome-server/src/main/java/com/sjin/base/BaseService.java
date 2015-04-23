@@ -7,4 +7,6 @@ package com.sjin.base;
  * @author: guanshj QQ: 928990049
  */
 public interface BaseService {
+
+
 }

@@ -1,6 +1,9 @@
 package com.sjin.controllers.manage;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.sjin.model.manage.User;
+import com.sjin.validators.manage.LoginValidator;
 
 /**
  * Description:  登陆页面控制器
@@ -14,7 +17,12 @@ public class LoginController extends Controller{
         render("login.html");
     }
 
+    @Before(LoginValidator.class)
     public void login (){
-        render("/manage/main");
+        /*User user = getModel(User.class);
+        System.out.println(user.getAttrValues());*/
+        System.out.println(getPara("user.username"));
+        System.out.println(getPara("user.password"));
+        redirect("/manage/main");
     }
 }

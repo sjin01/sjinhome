@@ -84,29 +84,33 @@
 
                                             <div class="space-6"></div>
 
-                                            <form style="text-align: center;" action="${base}/manage/login/login">
+                                            <form style="text-align: center;" action="${base}/manage/login/login" method="post">
                                                 <fieldset>
 
                                                     <#--<div class="inline width-20">用户名：</div>-->
                                                     <div class="inline width-75" style="padding-left: 10px;">
                                                         <label class="block clearfix inline">
 															<span class="block input-icon input-icon-right">
-																<input name="usercode" id="usercode" type="text"
+																<input name="username" id="usercode" type="text" value="${username!}"
                                                                        class="form-control" placeholder="用户名"/>
 																<i class="ace-icon fa fa-user"></i>
 															</span>
                                                         </label>
+
+                                                        <#--<span style="color: red;">${errorMsg!}</span>-->
                                                     </div>
 
                                                     <#--<div class="inline width-20">密码：</div>-->
                                                     <div class="inline width-75" style="padding-left: 10px;">
                                                         <label class="block clearfix">
 															<span class="block input-icon input-icon-right">
-																<input name="password" id="password" type="password"
+																<input name="password" id="password" type="password" value="${password!}"
                                                                        class="form-control" placeholder="密码"/>
 																<i class="ace-icon fa fa-lock"></i>
 															</span>
                                                         </label>
+                                                        <span style="color: red;">${errorMsg!}</span>
+                                                    <#--<span style="color: red;">123123</span>-->
                                                     </div>
 
                                                     <div class="space"></div>
@@ -115,7 +119,7 @@
                                                         <label class="inline">
                                                         </label>
 
-                                                        <button id="btnLogin" onclick="login()" type="button" style="margin-right: 60px;"
+                                                        <button id="btnLogin" type="submit" style="margin-right: 60px;"
                                                                 class="width-35 pull-right btn btn-sm btn-primary">
                                                             <i class="ace-icon fa fa-key"></i>
                                                             <span class="bigger-110">登录</span>

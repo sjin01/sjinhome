@@ -1,4 +1,4 @@
-package com.sjin.validators.manage.user;
+package com.sjin.validators.manage;
 
 import com.jfinal.core.Controller;
 import com.jfinal.validate.Validator;
@@ -22,9 +22,9 @@ public class UserValidator extends Validator {
         controller.keepModel(User.class);
 
         String actionKey = getActionKey();
-        if (actionKey.equals("/user/save"))
+        if (actionKey.equals("/manage/user/save"))
             controller.render("add.html");
-        else if (actionKey.equals("/user/update"))
+        else if (actionKey.equals("/manage/user/update"))
             controller.render("edit.html");
     }
 }

@@ -3,7 +3,7 @@ package com.sjin.controllers.manage;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.sjin.model.manage.User;
-import com.sjin.validators.manage.user.UserValidator;
+import com.sjin.validators.manage.UserValidator;
 
 import java.util.Map;
 
