@@ -79,7 +79,7 @@ create table t_sys_user
    status               int comment '状态：0未激活；1正常；2冻结',
    registerdate         datetime,
    registertype         int comment '注册方式：0管理员添加；1前台注册',
-   usertype             int comment '1：普通用户；0：管理员',
+   usertype             int comment '0：普通用户；520：管理员; 999:超级管理员',
    groupid              int,
    primary key (id)
 );

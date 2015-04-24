@@ -28,7 +28,7 @@ public class SjinConfig extends BaseConfig {
     public void configConstant(Constants constants) {
         super.configConstant(constants);
         constants.setViewType(ViewType.FREE_MARKER);  // 渲染模板类型
-        constants.setEncoding("utf-8");               // coding type
+//        constants.setEncoding("utf-8");               // coding type
     }
 
     /**

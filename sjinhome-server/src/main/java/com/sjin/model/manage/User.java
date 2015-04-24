@@ -18,7 +18,7 @@ import java.util.List;
     status               int comment '状态：0未激活；1正常；2冻结',
     registerdate         datetime,
     registertype         int comment '注册方式：0管理员添加；1前台注册',
-    usertype             int comment '1：普通用户；0：管理员',
+    usertype             int comment '0：普通用户；520：管理员; 999:超级管理员',
     groupid              int,
     primary key (id)
  *
@@ -34,15 +34,15 @@ public class User extends Model<User> {
     }
 
     /* 登陆方法 true 成功*/
-    public boolean login (String username , String password){
+    public User login (String username , String password){
 
-        if(username.isEmpty() || password.isEmpty()) return false;
+        if(username.isEmpty() || password.isEmpty()) return null;
 
         List<User> list = User.dao.find("select * from t_sys_user where username ='" + username + "' and password ='" + password+"' ");
         if(list == null || list.isEmpty()){
-            return false;
+            return null;
         }else{
-            return true;
+            return list.get(0);
         }
     }
 }

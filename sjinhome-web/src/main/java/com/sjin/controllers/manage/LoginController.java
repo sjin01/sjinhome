@@ -14,6 +14,7 @@ import com.sjin.validators.manage.LoginValidator;
 public class LoginController extends Controller{
 
     public void index (){
+        setAttr("errorMsg",getSessionAttr("errorMsg"));
         render("login.html");
     }
 
@@ -21,8 +22,13 @@ public class LoginController extends Controller{
     public void login (){
         /*User user = getModel(User.class);
         System.out.println(user.getAttrValues());*/
-        System.out.println(getPara("user.username"));
-        System.out.println(getPara("user.password"));
+
+        User loginUser = getSessionAttr("loginUser");
+
+        System.out.println(loginUser.get("id"));
+        System.out.println(loginUser.get("username"));
+        System.out.println(loginUser.get("password"));
+
         redirect("/manage/main");
     }
 }
