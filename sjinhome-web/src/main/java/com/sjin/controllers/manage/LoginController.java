@@ -2,6 +2,7 @@ package com.sjin.controllers.manage;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.sjin.constant.SysConstant;
 import com.sjin.model.manage.User;
 import com.sjin.validators.manage.LoginValidator;
 
@@ -20,15 +21,11 @@ public class LoginController extends Controller{
 
     @Before(LoginValidator.class)
     public void login (){
-        /*User user = getModel(User.class);
-        System.out.println(user.getAttrValues());*/
+        redirect("/manage/main");
+    }
 
-        /*User loginUser = getSessionAttr("loginUser");
-
-        System.out.println(loginUser.get("id"));
-        System.out.println(loginUser.get("username"));
-        System.out.println(loginUser.get("password"));*/
-
+    public void logout () {
+        setSessionAttr(SysConstant.SESSIONKEY_LOGIN_USER, null);
         redirect("/manage/main");
     }
 }
