@@ -28,14 +28,14 @@ public class ManageLoginInterceptor implements Interceptor {
 
         if(user == null){
             // 用户未登陆
-            System.out.println("没有登陆");
+            controller.setSessionAttr("errorMsg" ,"请登陆");
             controller.redirect("/manage/login");
             return ;
         }else{
             // 不是 管理员， 无法进去后台管理
             Integer userType = user.get("usertype");
-            if( user.get("usertype") != UserTypeEnum.SUPERADMIN.getCode()
-                    || user.get("usertype") != UserTypeEnum.ADMIN.getCode() ){
+            if( !user.get("usertype").equals(UserTypeEnum.SUPERADMIN.getCode())
+                    && !user.get("usertype").equals(UserTypeEnum.ADMIN.getCode()) ){
                 System.out.println("你不是管理员");
                 controller.setSessionAttr("errorMsg" ,"你不是管理员");
                 controller.redirect("/manage/login");

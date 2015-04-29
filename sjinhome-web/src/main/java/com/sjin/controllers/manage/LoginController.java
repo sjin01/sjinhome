@@ -23,11 +23,11 @@ public class LoginController extends Controller{
         /*User user = getModel(User.class);
         System.out.println(user.getAttrValues());*/
 
-        User loginUser = getSessionAttr("loginUser");
+        /*User loginUser = getSessionAttr("loginUser");
 
         System.out.println(loginUser.get("id"));
         System.out.println(loginUser.get("username"));
-        System.out.println(loginUser.get("password"));
+        System.out.println(loginUser.get("password"));*/
 
         redirect("/manage/main");
     }
