@@ -2,6 +2,7 @@ package com.sjin.controllers.manage;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.render.FreeMarkerRender;
 import com.sjin.constant.SysConstant;
 import com.sjin.model.manage.User;
 import com.sjin.validators.manage.LoginValidator;
@@ -25,7 +26,8 @@ public class LoginController extends Controller{
     }
 
     public void logout () {
-        setSessionAttr(SysConstant.SESSIONKEY_LOGIN_USER, null);
+        setSessionAttr(SysConstant.SESSIONKEY_LOGIN_USER, null);  // 清除Session登陆用户数据
+        FreeMarkerRender.getConfiguration().setSharedVariable(SysConstant.SESSIONKEY_LOGIN_USER, null); // 清除Freemarker模板登陆用户数据
         redirect("/manage/main");
     }
 }

@@ -68,6 +68,8 @@
     <!-- ace scripts -->
     <script src="${base}/plugin/ace/js/ace-elements.min.js"></script>
     <script src="${base}/plugin/ace/js/ace.min.js"></script>
+
+    <script src="${base}/js/manage-base.js"></script>
 </head>
 
 <body class="no-skin">
@@ -75,7 +77,7 @@
 
 
 
-<#include "_head.html">
+<#include "/manage/common/_head.html">
 
 <!-- /section:basics/navbar.layout -->
 <div class="main-container" id="main-container">
@@ -83,16 +85,16 @@
         try{ace.settings.check('main-container' , 'fixed')}catch(e){}
     </script>-->
 
-    <#include "_nav.html">
+    <#include "/manage/common/_nav.html">
 
     <!-- /section:basics/sidebar -->
     <div class="main-content">
 
         <#nested>
 
-        <!-- /section:basics/content.breadcrumbs -->
+        <#--<!-- /section:basics/content.breadcrumbs &ndash;&gt;
         <div class="page-content">
-            <!-- #section:settings.box -->
+            <!-- #section:settings.box &ndash;&gt;
             <div class="ace-settings-container" id="ace-settings-container">
                 <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
                     <i class="ace-icon fa fa-cog bigger-150"></i>
@@ -100,7 +102,7 @@
 
                 <div class="ace-settings-box clearfix" id="ace-settings-box">
                     <div class="pull-left width-50">
-                        <!-- #section:settings.skins -->
+                        <!-- #section:settings.skins &ndash;&gt;
                         <div class="ace-settings-item">
                             <div class="pull-left">
                                 <select id="skin-colorpicker" class="hide">
@@ -113,41 +115,41 @@
                             <span>&nbsp; Choose Skin</span>
                         </div>
 
-                        <!-- /section:settings.skins -->
+                        <!-- /section:settings.skins &ndash;&gt;
 
-                        <!-- #section:settings.navbar -->
+                        <!-- #section:settings.navbar &ndash;&gt;
                         <div class="ace-settings-item">
                             <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
                             <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
                         </div>
 
-                        <!-- /section:settings.navbar -->
+                        <!-- /section:settings.navbar &ndash;&gt;
 
-                        <!-- #section:settings.sidebar -->
+                        <!-- #section:settings.sidebar &ndash;&gt;
                         <div class="ace-settings-item">
                             <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
                             <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
                         </div>
 
-                        <!-- /section:settings.sidebar -->
+                        <!-- /section:settings.sidebar &ndash;&gt;
 
-                        <!-- #section:settings.breadcrumbs -->
+                        <!-- #section:settings.breadcrumbs &ndash;&gt;
                         <div class="ace-settings-item">
                             <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
                             <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
                         </div>
 
-                        <!-- /section:settings.breadcrumbs -->
+                        <!-- /section:settings.breadcrumbs &ndash;&gt;
 
-                        <!-- #section:settings.rtl -->
+                        <!-- #section:settings.rtl &ndash;&gt;
                         <div class="ace-settings-item">
                             <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
                             <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
                         </div>
 
-                        <!-- /section:settings.rtl -->
+                        <!-- /section:settings.rtl &ndash;&gt;
 
-                        <!-- #section:settings.container -->
+                        <!-- #section:settings.container &ndash;&gt;
                         <div class="ace-settings-item">
                             <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
                             <label class="lbl" for="ace-settings-add-container">
@@ -156,11 +158,11 @@
                             </label>
                         </div>
 
-                        <!-- /section:settings.container -->
-                    </div><!-- /.pull-left -->
+                        <!-- /section:settings.container &ndash;&gt;
+                    </div><!-- /.pull-left &ndash;&gt;
 
                     <div class="pull-left width-50">
-                        <!-- #section:basics/sidebar.options -->
+                        <!-- #section:basics/sidebar.options &ndash;&gt;
                         <div class="ace-settings-item">
                             <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
                             <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
@@ -176,22 +178,22 @@
                             <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
                         </div>
 
-                        <!-- /section:basics/sidebar.options -->
-                    </div><!-- /.pull-left -->
-                </div><!-- /.ace-settings-box -->
-            </div><!-- /.ace-settings-container -->
+                        <!-- /section:basics/sidebar.options &ndash;&gt;
+                    </div><!-- /.pull-left &ndash;&gt;
+                </div><!-- /.ace-settings-box &ndash;&gt;
+            </div><!-- /.ace-settings-container &ndash;&gt;
 
-            <!-- /section:settings.box -->
+            <!-- /section:settings.box &ndash;&gt;
             <div class="page-content-area">
                 <div class="row">
                     <div class="col-xs-12">
-                        <!-- PAGE CONTENT BEGINS -->
+                        <!-- PAGE CONTENT BEGINS &ndash;&gt;
 
-                        <!-- PAGE CONTENT ENDS -->
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.page-content-area -->
-        </div><!-- /.page-content -->
+                        <!-- PAGE CONTENT ENDS &ndash;&gt;
+                    </div><!-- /.col &ndash;&gt;
+                </div><!-- /.row &ndash;&gt;
+            </div><!-- /.page-content-area &ndash;&gt;
+        </div><!-- /.page-content &ndash;&gt;-->
 
 
 

@@ -7,8 +7,7 @@ import com.sjin.enums.UserTypeEnum;
 import com.sjin.model.manage.User;
 
 /**
- * Title :盛通-- 临澧教育局平台
- * Description:
+ * Description: 登陆验证器
  * 创建日期: 4/23  16:03
  *
  * @author: guanshj QQ: 928990049

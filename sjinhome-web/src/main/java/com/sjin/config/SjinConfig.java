@@ -44,6 +44,7 @@ public class SjinConfig extends BaseConfig {
         routes.add("/manage/login", LoginController.class);
         routes.add("/manage/main", ManageIndexController.class);
         routes.add("/manage/user", UsersController.class);
+
     }
 
     /**

@@ -2,6 +2,9 @@ package com.sjin.controllers.manage;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.mysql.jdbc.StringUtils;
+import com.sjin.constant.SysConstant;
+import com.sjin.interceptor.manage.ManageLoginInterceptor;
 import com.sjin.model.manage.User;
 import com.sjin.validators.manage.UserValidator;
 
@@ -13,12 +16,14 @@ import java.util.Map;
  *
  * @author: guanshj QQ: 928990049
  */
-//@Before(UserInterceptor.class)
+@Before(ManageLoginInterceptor.class)
 public class UsersController extends Controller {
 
     public void index () {
 //        System.out.println(JFinal.me().getServletContext().getAttribute("base"));
-        setAttr("userpage", User.dao.paginate(1, 10));
+        String page = getPara("page");
+        if(StringUtils.isNullOrEmpty(page)) page = "1";
+        setAttr("userpage", User.dao.paginate(Integer.valueOf(page), SysConstant.MANAGE_PAGESIZE));
 
         render("user.html");
     }

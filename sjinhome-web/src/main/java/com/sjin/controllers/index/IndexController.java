@@ -3,8 +3,7 @@ package com.sjin.controllers.index;
 import com.jfinal.core.Controller;
 
 /**
- * Title :盛通-- 临澧教育局平台
- * Description:
+ * Description: 网站首页
  * 创建日期: 4/20  10:51
  *
  * @author: guanshj QQ: 928990049
