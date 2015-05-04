@@ -28,7 +28,7 @@ public class ManageLoginInterceptor implements Interceptor {
 
         if(user == null){
             // 用户未登陆
-            controller.setSessionAttr("errorMsg" ,"请登陆");
+            controller.setSessionAttr(SysConstant.SESSIONKEY_MANAGE_ERROR ,"请登陆");
             controller.redirect("/manage/login");
             return ;
         }else{
@@ -37,7 +37,7 @@ public class ManageLoginInterceptor implements Interceptor {
             if( !user.get("usertype").equals(UserTypeEnum.SUPERADMIN.getCode())
                     && !user.get("usertype").equals(UserTypeEnum.ADMIN.getCode()) ){
                 System.out.println("你不是管理员");
-                controller.setSessionAttr("errorMsg" ,"你不是管理员");
+                controller.setSessionAttr(SysConstant.SESSIONKEY_MANAGE_ERROR ,"你不是管理员");
                 controller.redirect("/manage/login");
                 return ;
             }
