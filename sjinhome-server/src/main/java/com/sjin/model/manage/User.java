@@ -1,7 +1,9 @@
 package com.sjin.model.manage;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
+import com.mysql.jdbc.StringUtils;
 
 import java.util.List;
 
@@ -30,19 +32,60 @@ public class User extends Model<User> {
      * 所有 sql 写在 Model 或 Service 中，不要写在 Controller 中，养成好习惯，有利于大型项目的开发与维护
      */
     public Page<User> paginate(int pageNumber, int pageSize) {
-        return paginate(pageNumber, pageSize, "select * " , " from t_sys_user order by registerdate,id desc");
+        return paginate(pageNumber, pageSize, "select * " , " from t_sys_user " +
+                " where usertype != 999 " +
+                " order by registerdate desc ,id desc");
     }
 
-    /* 登陆方法 true 成功*/
+    /* 登陆方法  */
     public User login (String username , String password){
 
-        if(username.isEmpty() || password.isEmpty()) return null;
+        if(StringUtils.isNullOrEmpty(username) || StringUtils.isNullOrEmpty(password)) return null;
 
-        List<User> list = User.dao.find("select * from t_sys_user where username ='" + username + "' and password ='" + password+"' ");
+        List<User> list = dao.find("select * from t_sys_user where username ='" + username + "' and password ='" + password+"' ");
         if(list == null || list.isEmpty()){
             return null;
         }else{
             return list.get(0);
+        }
+    }
+
+    /*用户名是否 不存在*/
+    public Boolean usernameNotExist (String username) {
+        if(!StringUtils.isNullOrEmpty(username)){
+            List<User> list = dao.find("select * from t_sys_user where username ='" + username + "' ");
+            if(list == null || list.isEmpty()){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    /*public void deleteList (List<Integer> ids) {
+        if(ids !=null && ids.size()>0){
+            StringBuilder sqlsb = new StringBuilder();
+            sqlsb.append("delete from t_sys_user where id in ( ");
+            for(Integer id : ids){
+                sqlsb.append(id);
+                sqlsb.append(",");
+            }
+            sqlsb.append(" -1) ");
+
+            Db.update(sqlsb.toString());
+        }
+
+    }*/
+    public void deleteList (String ids) {
+        if(!StringUtils.isNullOrEmpty( ids )){
+            StringBuilder sqlsb = new StringBuilder();
+            sqlsb.append("delete from t_sys_user where id in ( ");
+            sqlsb.append(ids);
+            sqlsb.append(" -1) ");
+
+            Db.update(sqlsb.toString());
         }
     }
 }

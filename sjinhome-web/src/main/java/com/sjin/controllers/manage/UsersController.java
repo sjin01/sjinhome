@@ -8,6 +8,8 @@ import com.sjin.interceptor.manage.ManageLoginInterceptor;
 import com.sjin.model.manage.User;
 import com.sjin.validators.manage.UserValidator;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,9 +25,14 @@ public class UsersController extends Controller {
 //        System.out.println(JFinal.me().getServletContext().getAttribute("base"));
         String page = getPara("page");
         if(StringUtils.isNullOrEmpty(page)) page = "1";
-        setAttr("userpage", User.dao.paginate(Integer.valueOf(page), SysConstant.MANAGE_PAGESIZE));
-//        System.out.println(getText("testZhCn"));
+        setAttr("page" , page);
         render("user.html");
+    }
+
+    public void list (){
+        String page = getPara("page");
+        setAttr("userpage", User.dao.paginate(Integer.valueOf(page), SysConstant.MANAGE_PAGESIZE));
+        render("_list.html");
     }
 
     public void add(){
@@ -34,7 +41,10 @@ public class UsersController extends Controller {
 
     @Before(UserValidator.class)
     public void save() {
-        getModel(User.class).save();
+        User user = getModel(User.class);
+        user.set("registerdate" , new Date());
+        user.set("registertype" , 0);
+        user.save();
         redirect("/manage/user");
     }
 
@@ -51,6 +61,14 @@ public class UsersController extends Controller {
     public void delete() {
         User.dao.deleteById(getParaToInt());
         redirect("/manage/user");
+    }
+    public void deleteList(){
+        String idsStr = getPara("ids");
+        /*System.out.println(idsStr);
+        String[] idsStrArr = idsStr.split(",");*/
+        User.dao.deleteList(idsStr);
+//        redirect("/manage/user");
+        renderJson(200);
     }
 
     public void testajax(){

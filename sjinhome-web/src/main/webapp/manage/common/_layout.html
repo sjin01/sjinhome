@@ -16,31 +16,23 @@
     <link rel="stylesheet" href="${base}/plugin/ace/css/font-awesome.min.css" />
 
     <!-- page specific plugin styles -->
-
+    <link rel="stylesheet" href="${base}/plugin/ace/css/jquery.gritter.css" />
     <!-- text fonts -->
     <link rel="stylesheet" href="${base}/plugin/ace/css/ace-fonts.css" />
-
     <!-- ace styles -->
     <link rel="stylesheet" href="${base}/plugin/ace/css/ace.min.css" id="main-ace-style" />
-
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="${base}/plugin/ace/css/ace-part2.min.css" />
     <![endif]-->
-
     <link rel="stylesheet" href="${base}/plugin/ace/css/ace-skins.min.css" />
     <link rel="stylesheet" href="${base}/plugin/ace/css/ace-rtl.min.css" />
-
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="${base}/plugin/ace/css/ace-ie.min.css" />
     <![endif]-->
 
-    <!-- inline styles related to this page -->
-
     <!-- ace settings handler -->
     <script src="${base}/plugin/ace/js/ace-extra.min.js"></script>
-
     <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
     <!--[if lte IE 8]>
         <script src="${base}/plugin/ace/js/html5shiv.min.js"></script>
         <script src="${base}/plugin/ace/js/respond.min.js"></script>
@@ -64,18 +56,16 @@
     </script>
 
     <script src="${base}/plugin/ace/js/bootstrap.min.js"></script>
-
+    <script src="${base}/plugin/ace/js/bootbox.min.js"></script>
     <!-- ace scripts -->
     <script src="${base}/plugin/ace/js/ace-elements.min.js"></script>
     <script src="${base}/plugin/ace/js/ace.min.js"></script>
 
+    <script src="${base}/plugin/ace/js/jquery.gritter.min.js"></script>
     <script src="${base}/js/manage-base.js"></script>
 </head>
 
 <body class="no-skin">
-
-
-
 
 <#include "/manage/common/_head.html">
 
@@ -84,120 +74,26 @@
     <#--<script type="text/javascript">
         try{ace.settings.check('main-container' , 'fixed')}catch(e){}
     </script>-->
-
     <#include "/manage/common/_nav.html">
 
     <!-- /section:basics/sidebar -->
     <div class="main-content">
 
-        <#nested>
+        <#include "/manage/common/_breadcrumbs.html">
 
-        <#--<!-- /section:basics/content.breadcrumbs &ndash;&gt;
         <div class="page-content">
-            <!-- #section:settings.box &ndash;&gt;
-            <div class="ace-settings-container" id="ace-settings-container">
-                <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-                    <i class="ace-icon fa fa-cog bigger-150"></i>
-                </div>
 
-                <div class="ace-settings-box clearfix" id="ace-settings-box">
-                    <div class="pull-left width-50">
-                        <!-- #section:settings.skins &ndash;&gt;
-                        <div class="ace-settings-item">
-                            <div class="pull-left">
-                                <select id="skin-colorpicker" class="hide">
-                                    <option data-skin="no-skin" value="#438EB9">#438EB9</option>
-                                    <option data-skin="skin-1" value="#222A2D">#222A2D</option>
-                                    <option data-skin="skin-2" value="#C6487E">#C6487E</option>
-                                    <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-                                </select>
-                            </div>
-                            <span>&nbsp; Choose Skin</span>
-                        </div>
+            <#include "/manage/common/_settings.html">
 
-                        <!-- /section:settings.skins &ndash;&gt;
-
-                        <!-- #section:settings.navbar &ndash;&gt;
-                        <div class="ace-settings-item">
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-                            <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
-                        </div>
-
-                        <!-- /section:settings.navbar &ndash;&gt;
-
-                        <!-- #section:settings.sidebar &ndash;&gt;
-                        <div class="ace-settings-item">
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-                            <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-                        </div>
-
-                        <!-- /section:settings.sidebar &ndash;&gt;
-
-                        <!-- #section:settings.breadcrumbs &ndash;&gt;
-                        <div class="ace-settings-item">
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-                            <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-                        </div>
-
-                        <!-- /section:settings.breadcrumbs &ndash;&gt;
-
-                        <!-- #section:settings.rtl &ndash;&gt;
-                        <div class="ace-settings-item">
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-                            <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-                        </div>
-
-                        <!-- /section:settings.rtl &ndash;&gt;
-
-                        <!-- #section:settings.container &ndash;&gt;
-                        <div class="ace-settings-item">
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
-                            <label class="lbl" for="ace-settings-add-container">
-                                Inside
-                                <b>.container</b>
-                            </label>
-                        </div>
-
-                        <!-- /section:settings.container &ndash;&gt;
-                    </div><!-- /.pull-left &ndash;&gt;
-
-                    <div class="pull-left width-50">
-                        <!-- #section:basics/sidebar.options &ndash;&gt;
-                        <div class="ace-settings-item">
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
-                            <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
-                        </div>
-
-                        <div class="ace-settings-item">
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" />
-                            <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
-                        </div>
-
-                        <div class="ace-settings-item">
-                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
-                            <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
-                        </div>
-
-                        <!-- /section:basics/sidebar.options &ndash;&gt;
-                    </div><!-- /.pull-left &ndash;&gt;
-                </div><!-- /.ace-settings-box &ndash;&gt;
-            </div><!-- /.ace-settings-container &ndash;&gt;
-
-            <!-- /section:settings.box &ndash;&gt;
             <div class="page-content-area">
                 <div class="row">
                     <div class="col-xs-12">
-                        <!-- PAGE CONTENT BEGINS &ndash;&gt;
-
-                        <!-- PAGE CONTENT ENDS &ndash;&gt;
-                    </div><!-- /.col &ndash;&gt;
-                </div><!-- /.row &ndash;&gt;
-            </div><!-- /.page-content-area &ndash;&gt;
-        </div><!-- /.page-content &ndash;&gt;-->
-
-
-
-    </div><!-- /.main-content -->
+                        <#nested>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="footer">
         <div class="footer-inner">
