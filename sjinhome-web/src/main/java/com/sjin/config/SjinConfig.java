@@ -9,6 +9,7 @@ import com.sjin.controllers.index.IndexController;
 import com.sjin.controllers.manage.LoginController;
 import com.sjin.controllers.manage.ManageIndexController;
 import com.sjin.controllers.manage.UsersController;
+import com.sjin.interceptor.EncodingInterceptor;
 import freemarker.template.TemplateModelException;
 
 import javax.servlet.ServletContext;
@@ -28,7 +29,7 @@ public class SjinConfig extends BaseConfig {
     public void configConstant(Constants constants) {
         super.configConstant(constants);
         constants.setViewType(ViewType.FREE_MARKER);  // 渲染模板类型
-//        constants.setEncoding("utf-8");               // coding type
+        constants.setEncoding("utf-8");               // coding type
     }
 
     /**
@@ -61,6 +62,7 @@ public class SjinConfig extends BaseConfig {
     @Override
     public void configInterceptor(Interceptors interceptors) {
         super.configInterceptor(interceptors);
+//        interceptors.add( new EncodingInterceptor() );
     }
 
     /**

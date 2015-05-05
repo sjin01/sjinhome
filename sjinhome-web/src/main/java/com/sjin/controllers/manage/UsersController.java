@@ -24,7 +24,7 @@ public class UsersController extends Controller {
         String page = getPara("page");
         if(StringUtils.isNullOrEmpty(page)) page = "1";
         setAttr("userpage", User.dao.paginate(Integer.valueOf(page), SysConstant.MANAGE_PAGESIZE));
-
+//        System.out.println(getText("testZhCn"));
         render("user.html");
     }
 

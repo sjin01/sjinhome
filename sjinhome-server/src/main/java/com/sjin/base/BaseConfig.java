@@ -1,6 +1,7 @@
 package com.sjin.base;
 
 import com.jfinal.config.*;
+import com.jfinal.i18n.I18N;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.sjin.model.manage.*;
@@ -20,6 +21,9 @@ public class BaseConfig extends JFinalConfig {
         // 加载少量必要配置，随后可用getProperty(...)获取值
         loadPropertyFile("jdbc.properties");
         constants.setDevMode( getPropertyToBoolean("devMode", false));
+
+        //后面两个参数根据自己情况添加默认语言国家
+//        I18N.init("sjin", null, null);
     }
 
     /**
