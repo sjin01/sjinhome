@@ -1,0 +1,53 @@
+<#include "/manage/common/_layout.html"/>
+<@layout>
+
+<script src="${base}/plugin/ace/js/fuelux/fuelux.tree.min.js"></script>
+<script src="${base}/js/func_fueluxtree.js"></script>
+
+<div class="page-header">
+    <h1>
+        功能菜单配置
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            What you can do ? <#--你能做什么-->
+        </small>
+    </h1>
+</div>
+<div class="col-xs-12">
+    <div class="col-xs-3">
+
+
+        <div class="widget-box widget-color-blue2">
+
+
+            <div class="widget-body">
+                <div class="widget-main padding-8">
+                    <div id="treeview" class="tree"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-9"></div>
+</div>
+</@layout>
+<script type="text/javascript">
+
+    var tree ;
+    $(function () {
+
+        /*$('.scrollable').each(function () {
+            var $this = $(this);
+            $(this).ace_scroll({
+                size: $this.data('size') || 100,
+                //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
+            });
+        });*/
+
+        /**
+        * init org
+        * */
+        tree = initFuncTree( 'treeview' ,'${base}/manage/func/treeData' ,false, function (){
+        });
+
+    })
+</script>
