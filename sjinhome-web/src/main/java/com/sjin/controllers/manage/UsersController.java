@@ -3,6 +3,7 @@ package com.sjin.controllers.manage;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.mysql.jdbc.StringUtils;
+import com.sjin.base.BaseController;
 import com.sjin.constant.SysConstant;
 import com.sjin.interceptor.manage.ManageLoginInterceptor;
 import com.sjin.model.manage.User;
@@ -19,7 +20,7 @@ import java.util.Map;
  * @author: guanshj QQ: 928990049
  */
 @Before(ManageLoginInterceptor.class)
-public class UsersController extends Controller {
+public class UsersController extends BaseController {
 
     public void index () {
 //        System.out.println(JFinal.me().getServletContext().getAttribute("base"));
@@ -62,19 +63,24 @@ public class UsersController extends Controller {
         User.dao.deleteById(getParaToInt());
         redirect("/manage/user");
     }
+
+    /**
+     * 批量删除， 同时也是 ajax示例
+     */
     public void deleteList(){
         String idsStr = getPara("ids");
+        User.dao.deleteList(idsStr);
+        renderJson(getSuccessfulResultMap());
+
         /*System.out.println(idsStr);
         String[] idsStrArr = idsStr.split(",");*/
-        User.dao.deleteList(idsStr);
 //        redirect("/manage/user");
-        renderJson(200);
     }
 
-    public void testajax(){
+    /*public void testajax(){
         Map map = getParaMap();
 
         System.out.println(getPara("param3"));
         renderJson(User.dao.paginate(1, 10));
-    }
+    }*/
 }

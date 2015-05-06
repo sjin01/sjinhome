@@ -89,7 +89,7 @@
             data: {'ids':ids } ,
             dataType:'json',
             success:function( result ){
-                if(result ==200){
+                if(result.code == 200){
                     $("#table_div").load("${base}/manage/user/list?page=${page}");
                     myGritterSuccess('操作成功！');
                 }
