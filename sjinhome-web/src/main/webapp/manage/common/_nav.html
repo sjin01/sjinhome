@@ -1,8 +1,7 @@
 <!-- #section:basics/sidebar -->
-<div id="sidebar" class="sidebar responsive">
-<#--<script type="text/javascript">
-    try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-</script>-->
+<#--<script type="text/javascript">-->
+    <#--try{ace.settings.check('sidebar' , 'fixed')}catch(e){}-->
+<#--</script>-->
 
 <#--<div class="sidebar-shortcuts" id="sidebar-shortcuts">
     <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
@@ -37,7 +36,7 @@
     </div>
 </div><!-- /.sidebar-shortcuts &ndash;&gt;-->
     <ul class="nav nav-list">
-        <li class="active open">
+        <li <#if funccid??>class=""<#else>class="active"</#if>>
             <a href="${base}/manage/main">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text"> 工作台 </span>
@@ -46,7 +45,30 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="">
+
+        <#list nav as navObj>
+
+            <li <#if (funcpid?? && navObj.id == funcpid)||(funccid?? && navObj.id == funccid)> class="active open" <#else>class="" </#if> >
+                <a href="${base}${(navObj.path)!}" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text"> ${(navObj.name)!} </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <#if navObj.sonList??>
+                <ul class="submenu">
+                    <#list navObj.sonList as son>
+                        <li <#if funccid?? && son.id == funccid> class="active"<#else>class="" </#if>>
+                            <a href="${base}${son.path!}"><i class="menu-icon fa fa-caret-right"></i>${son.name!}</a>
+                            <b class="arrow"></b>
+                        </li>
+                    </#list>
+                </ul>
+                </#if>
+            </li>
+        </#list>
+
+        <#--<li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-desktop"></i>
                 <span class="menu-text"> 系统维护 </span>
@@ -86,7 +108,7 @@
                     <b class="arrow"></b>
                 </li>
             </ul>
-        </li>
+        </li>-->
 
     </ul>
     <!-- /.nav-list -->
@@ -98,7 +120,6 @@
     </div>
 
     <!-- /section:basics/sidebar.layout.minimize -->
-<#--<script type="text/javascript">
-    try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-</script>-->
-</div>
+<#--<script type="text/javascript">-->
+    <#--try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}-->
+<#--</script>-->

@@ -1,7 +1,11 @@
 package com.sjin.model.manage;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
+
+import java.util.List;
 
 /**
  * 功能  t_sys_func
@@ -26,5 +30,26 @@ public class Func extends Model<Func>{
      */
     public Page<Func> paginate(int pageNumber, int pageSize) {
         return paginate(pageNumber, pageSize, "select * " , " from t_sys_func order by sort asc");
+    }
+
+    public List<Record> getFuncByPid (int pid ,int type) {
+        return Db.find("select * from test.t_sys_func where pid = " + pid + " and type =" + type + " order by sort ");
+    }
+
+    public List<Record> getNav () {
+        List<Record> list = getFuncByPid(0 , 1);
+        if(list !=null && !list.isEmpty()){
+            for(Record item : list){
+                List<Record> listSon = getFuncByPid(item.getInt("id") , 1);
+                item.set("sonList" , listSon);
+            }
+        }
+        return list;
+    }
+
+    public Func getFuncByPath (String path){
+        List<Func> list = dao.find("select * from test.t_sys_func where path like '%" + path + "%' ");
+        if(list!=null && !list.isEmpty()) return list.get(0);
+        return null;
     }
 }

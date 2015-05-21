@@ -6,10 +6,7 @@ import com.jfinal.render.FreeMarkerRender;
 import com.jfinal.render.ViewType;
 import com.sjin.base.BaseConfig;
 import com.sjin.controllers.index.IndexController;
-import com.sjin.controllers.manage.FuncController;
-import com.sjin.controllers.manage.LoginController;
-import com.sjin.controllers.manage.ManageIndexController;
-import com.sjin.controllers.manage.UsersController;
+import com.sjin.controllers.manage.*;
 import com.sjin.interceptor.EncodingInterceptor;
 import freemarker.template.TemplateModelException;
 
@@ -47,6 +44,7 @@ public class SjinConfig extends BaseConfig {
         routes.add("/manage/main", ManageIndexController.class);
         routes.add("/manage/user", UsersController.class);
         routes.add("/manage/func", FuncController.class);
+        routes.add("/manage/common", CommonController.class);
 
     }
 

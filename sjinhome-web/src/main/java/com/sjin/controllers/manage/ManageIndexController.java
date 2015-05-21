@@ -21,4 +21,6 @@ public class ManageIndexController extends Controller {
         FreeMarkerRender.getConfiguration().setSharedVariable(SysConstant.SESSIONKEY_LOGIN_USER, getSessionAttr(SysConstant.SESSIONKEY_LOGIN_USER));
         render("manageindex.html");
     }
+
+
 }
