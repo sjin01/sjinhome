@@ -32,10 +32,20 @@ public class Func extends Model<Func>{
         return paginate(pageNumber, pageSize, "select * " , " from t_sys_func order by sort asc");
     }
 
+    /**
+     * 根据 pid查询 list
+     * @param pid
+     * @param type
+     * @return
+     */
     public List<Record> getFuncByPid (int pid ,int type) {
         return Db.find("select * from test.t_sys_func where pid = " + pid + " and type =" + type + " order by sort ");
     }
 
+    /**
+     * 获取 仅支持两级的菜单
+     * @return
+     */
     public List<Record> getNav () {
         List<Record> list = getFuncByPid(0 , 1);
         if(list !=null && !list.isEmpty()){
@@ -47,9 +57,33 @@ public class Func extends Model<Func>{
         return list;
     }
 
+    /**
+     * 根据 path 查找一个对象
+     * @param path
+     * @return
+     */
     public Func getFuncByPath (String path){
         List<Func> list = dao.find("select * from test.t_sys_func where path like '%" + path + "%' ");
         if(list!=null && !list.isEmpty()) return list.get(0);
         return null;
+    }
+
+    /**
+     * 清理找不到 父级节点的 垃圾数据
+     */
+    public void clearRubbish(){
+        List<Record> idlist = Db.find("select f.id from t_sys_func f where f.pid!=0 and f.pid not in (select f2.id from t_sys_func f2)");
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(" delete from t_sys_func where id in ( ");
+
+        for(Record obj : idlist){
+            sb.append(obj.getInt("id") + " , ");
+        }
+
+        sb.append(" -1 ) ");
+
+        System.out.println(sb.toString());
+        Db.update(sb.toString());
     }
 }

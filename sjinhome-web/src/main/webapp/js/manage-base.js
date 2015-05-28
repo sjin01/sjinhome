@@ -21,20 +21,23 @@ $(function (){
 })
 
 
-function myConfirm (confirmStr , callback){
+function myConfirm (confirmStr , callback ,btnname1 ,btnname2){
     if(!callback){
         callback = function (){};
     }
+    if(!btnname1){ callback = '是滴嘞';}
+    if(!btnname2){ callback = '算哒';}
     bootbox.confirm({
+        title : '<span style="color:#6fb3e0;">操作提示</span>',
         message: confirmStr,
         buttons: {
             confirm: {
-                label: "确认",
-                className: "btn-primary btn-sm"
+                label: btnname1,
+                className: "btn-primary btn-xs"
             },
             cancel: {
-                label: "取消",
-                className: "btn-sm"
+                label: btnname2,
+                className: "btn-xs"
             }
         },
         callback: function(result) {
@@ -43,23 +46,26 @@ function myConfirm (confirmStr , callback){
     });
 }
 
-function myConfirmTwo (confirmStr,callback,callmain){
+function myConfirmTwo (confirmStr,callback,callmain ,btnname1 ,btnname2){
     if(!callback){
         callback = function (){};
     }
     if(!callmain){
         callmain = function (){};
     }
+    if(!btnname1){ callback = '要得咯';}
+    if(!btnname2){ callback = '等哈着';}
     bootbox.confirm({
+        title : '<span style="color:#6fb3e0;">操作提示</span>',
         message: confirmStr,
         buttons: {
             confirm: {
-                label: "确认",
-                className: "btn-primary btn-sm"
+                label: btnname1,
+                className: "btn-primary btn-xs"
             },
             cancel: {
-                label: "取消",
-                className: "btn-sm"
+                label: btnname2,
+                className: "btn-xs"
             }
         },
         callback: function(result) {

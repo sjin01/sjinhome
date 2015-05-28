@@ -3,6 +3,7 @@ package com.sjin.enums;
 public enum ResponseCodeEnum {
 	
 	AJAX_SUCCESS(200, "请求成功"),
+	AJAX_ERROR(250, "后台验证错误"),
 	AJAX_NO_AUTH(405, "没有访问权限"),
 	AJAX_FAILURE(500, "请求失败"),
 	AJAX_USERNAME_PASSWORD_ERROR(510, "用户名密码错误"),
