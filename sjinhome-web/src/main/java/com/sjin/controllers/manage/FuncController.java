@@ -1,8 +1,10 @@
 package com.sjin.controllers.manage;
 
 import com.jfinal.aop.Before;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 import com.sjin.base.BaseController;
+import com.sjin.interceptor.manage.ManageLoginInterceptor;
 import com.sjin.model.manage.Func;
 import com.sjin.services.manage.FueluxTreeSerivce;
 import com.sjin.validators.manage.FuncValidator;
@@ -15,6 +17,7 @@ import java.util.List;
  *
  * @author: guanshj QQ: 928990049
  */
+@Before(ManageLoginInterceptor.class)
 public class FuncController extends BaseController {
 
     public void index () {
