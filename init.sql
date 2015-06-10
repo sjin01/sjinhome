@@ -92,7 +92,7 @@ alter table t_sys_user comment '用户主表';
 create table t_sys_user_group
 (
    id                   int not null,
-   name                 int comment '用户组名',
+   name                 varchar(45) comment '用户组名',
    status               int comment '1正常；0禁用',
    sort                 int,
    primary key (id)

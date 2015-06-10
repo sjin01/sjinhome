@@ -1,7 +1,9 @@
 package com.sjin.model.manage;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
+import com.mysql.jdbc.StringUtils;
 
 /**
  * 用户组 t_sys_user_group
@@ -21,6 +23,17 @@ public class UserGroup extends Model<UserGroup>{
      * 所有 sql 写在 Model 或 Service 中，不要写在 Controller 中，养成好习惯，有利于大型项目的开发与维护
      */
     public Page<UserGroup> paginate(int pageNumber, int pageSize) {
-        return paginate(pageNumber, pageSize, "select * " , " from t_sys_user_group order by sort ");
+        return paginate(pageNumber, pageSize, "select * " , " from t_sys_user_group order by sort desc");
+    }
+
+    public void deleteList(String ids){
+        if(!StringUtils.isNullOrEmpty(ids)){
+            StringBuilder sqlsb = new StringBuilder();
+            sqlsb.append("delete from t_sys_user_group where id in ( ");
+            sqlsb.append(ids);
+            sqlsb.append(" -1) ");
+
+            Db.update(sqlsb.toString());
+        }
     }
 }
