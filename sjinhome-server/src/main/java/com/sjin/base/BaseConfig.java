@@ -5,6 +5,8 @@ import com.jfinal.i18n.I18N;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.sjin.model.manage.*;
+import com.sjin.model.timeline.Timeline;
+import com.sjin.model.timeline.TimelineMore;
 
 /**
  * Description: API引导式配置
@@ -55,6 +57,9 @@ public class BaseConfig extends JFinalConfig {
         arp.addMapping("t_sys_user", User.class);
         arp.addMapping("t_sys_user_group", UserGroup.class);
         arp.addMapping("t_sys_user_role", UserRole.class);
+
+        arp.addMapping("t_timeline", Timeline.class);
+        arp.addMapping("t_timeline_more", TimelineMore.class);
     }
 
     /**

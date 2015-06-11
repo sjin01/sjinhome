@@ -5,9 +5,9 @@ import com.jfinal.core.JFinal;
 import com.jfinal.render.FreeMarkerRender;
 import com.jfinal.render.ViewType;
 import com.sjin.base.BaseConfig;
+import com.sjin.controllers.timeline.TimelineController;
 import com.sjin.controllers.index.IndexController;
 import com.sjin.controllers.manage.*;
-import com.sjin.interceptor.EncodingInterceptor;
 import freemarker.template.TemplateModelException;
 
 import javax.servlet.ServletContext;
@@ -38,6 +38,7 @@ public class SjinConfig extends BaseConfig {
         super.configRoute(routes);
         // 前台
         routes.add("/", IndexController.class);
+        routes.add("/timeline", TimelineController.class);
 
         // 后台 manage
         routes.add("/manage/login", LoginController.class);

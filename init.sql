@@ -118,3 +118,39 @@ ALTER TABLE t_sys_user_group CHANGE COLUMN id id INT(11) NOT NULL AUTO_INCREMENT
 ALTER TABLE t_sys_user_role CHANGE COLUMN id id INT(11) NOT NULL AUTO_INCREMENT  ;
 
 
+
+drop table if exists t_tiemline;
+
+/*==============================================================*/
+/* table: t_tiemline                                            */
+/*==============================================================*/
+create table t_timeline
+(
+   id                   int not null auto_increment,
+   type                 int comment '类型：1：sjin的成长；2：sjin于dcc；99：用户记录',
+   year                 varchar(45),
+   date                 varchar(45),
+   txt                  varchar(255),
+   version              varchar(45),
+   primary key (id)
+);
+
+alter table t_tiemline comment '时间轴 主表t_tiemline';
+
+drop table if exists t_timeline_more;
+
+/*==============================================================*/
+/* table: t_timeline_more                                       */
+/*==============================================================*/
+create table t_timeline_more
+(
+   id                   int not null auto_increment,
+   tid                  int,
+   txt                  varchar(255),
+   sort                 int,
+   primary key (id)
+);
+
+alter table t_timeline_more comment '时间轴更多说明：t_timeline_more';
+
+
