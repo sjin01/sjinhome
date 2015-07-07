@@ -45,4 +45,9 @@ public class SsqController extends Controller {
         setAttr("record" , DoubleballRecord.dao.getRecord( StringUtils.isEmpty(page) ? 1: Integer.parseInt(page), 20) );
         render("record.html");
     }
+
+    public void add (){
+        render("_add.html");
+    }
+
 }

@@ -1,0 +1,32 @@
+<form action="${base}/manage/usergroup/save" method="post" class="form-horizontal" id="ssqForm">
+    <fieldset class="solid">
+
+        <input type="hidden" name="userGroup.id"  />
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right"> 期号 <span class="red">*</span> </label>
+            <div class="col-sm-9">
+                <input type="text" name="period" placeholder="开奖期号" class="col-sm-5" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right"> 红球 <span class="red">*</span> </label>
+            <div class="col-sm-9">
+                <input type="text" name="redBall1" placeholder="红1" class="col-xs-2 input-mini mr5" />
+                <input type="text" name="redBall2" placeholder="红2" class="col-xs-2 input-mini mr5" />
+                <input type="text" name="redBall3" placeholder="红3" class="col-xs-2 input-mini mr5" />
+                <input type="text" name="redBall4" placeholder="红4" class="col-xs-2 input-mini mr5" />
+                <input type="text" name="redBall5" placeholder="红5" class="col-xs-2 input-mini mr5" />
+                <input type="text" name="redBall6" placeholder="红6" class="col-xs-2 input-mini mr5" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right"> 蓝球 <span class="red">*</span> </label>
+            <div class="col-sm-9">
+                <input type="text" name="blueBall" placeholder="蓝球" class="col-sm-2 input-mini"  />
+            </div>
+        </div>
+    </fieldset>
+</form>

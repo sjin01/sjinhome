@@ -20,6 +20,13 @@ $(function (){
     $('[data-rel=tooltip]').tooltip({container:'body'});
 })
 
+/*function myBootbox (option) {
+    this.title = option.title;
+    this.message = option.message;
+    this.title = option.title;
+    this.title = option.title;
+}*/
+
 
 function myConfirm (confirmStr , callback ,btnname1 ,btnname2){
     if(!callback){
