@@ -41,11 +41,7 @@ public class UserGroupController extends BaseController {
     }
 
     public void save (){
-        UserGroup usergroup = new UserGroup();
-//        usergroup.set("id", "0".equals(getPara("usergroup.id")) ? null :getPara("usergroup.id")  );
-        usergroup.set("name", getPara("usergroup.name"));
-        usergroup.set("status", getPara("usergroup.status"));
-        usergroup.set("sort", getPara("usergroup.sort"));
+        UserGroup usergroup = getModel(UserGroup.class);
         usergroup.save();
         redirect("/manage/usergroup");
     }

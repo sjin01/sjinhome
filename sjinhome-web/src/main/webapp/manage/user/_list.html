@@ -51,12 +51,21 @@
           </#if>
         </td>
         <td>
-            <button class="btn btn-xs btn-info" onclick="location.href='${base}/manage/user/edit/${ss.id!}'">
+            <button class="btn btn-xs btn-info" onclick="location.href='${base}/manage/user/edit/${ss.id!}'"
+                    data-rel="tooltip" data-original-title="编辑">
                 <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-            <button class="btn btn-xs btn-danger" onclick="del(${ss.id!})">
+            <button class="btn btn-xs btn-danger" onclick="del(${ss.id!})"
+                    data-rel="tooltip" data-original-title="删除">
                 <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
+
+            <#--<div class="action-buttons">
+                <a class="red" href="javascript:void(0);" onclick="del(${ss.id!})"  title=""
+                   data-rel="tooltip" data-original-title="删除">
+                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                </a>
+            </div>-->
         </td>
     </tr>
     </#list>
@@ -68,6 +77,8 @@
 <@paginate currentPage = userpage.pageNumber totalPage = userpage.totalPage actionUrl = "${base}/manage/user?page=" />
 
 <script>
+    $('[data-rel=tooltip]').tooltip({container:'body'});
+
     function del(id){
         myConfirm("你确定删除？" ,function (){
             location.href='${base}/manage/user/delete/' + id;
