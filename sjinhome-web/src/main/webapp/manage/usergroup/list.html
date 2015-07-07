@@ -20,7 +20,7 @@
             <div class="widget-toolbar">
 
                 <div class="action-buttons inline">
-                    <a href="javascript:void(0);" onclick="" data-rel="tooltip" data-original-title="添加用户组">
+                    <a href="javascript:void(0);" onclick="loadAdd();" data-rel="tooltip" data-original-title="添加用户组">
                         <i class="fa fa-plus-circle"></i>
                     </a>
 
@@ -70,8 +70,8 @@
                             </td>
                             <td>
                                 <div class="action-buttons">
-                                    <a class="red" href="${base}/usergroup/delete?id=${ss.id!}&cPage=${usergroupdata.pageNumber}"  title=""
-                                       data-rel="tooltip" data-original-title="批量删除">
+                                    <a class="red" href="${base}/manage/usergroup/delete?id=${ss.id!}&cPage=${usergroupdata.pageNumber}"  title=""
+                                       data-rel="tooltip" data-original-title="删除">
                                         <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                     </a>
                                 </div>
@@ -99,21 +99,51 @@
             return false;
         }
 
-        var ids = '';
-        $('.item:checkbox').filter(":checked").each(function (){
-            ids += $(this).val() + ',';
-        })
-//        $("#ids").val(ids);
-//        $("#deleteList_form").submit();
+        myConfirm("你确定哈把他删噶？" , function (){
+            var ids = '';
+            $('.item:checkbox').filter(":checked").each(function (){
+                ids += $(this).val() + ',';
+            })
 
+            $.ajax({
+                url:"${base}/manage/usergroup/deleteList" ,
+                type:'POST',
+                data: {'ids':ids } ,
+                dataType:'json',
+                success:function( result ){
+                    if(result.code == 200){
+                        location.href = '${base}/manage/usergroup?cPage=${usergroupdata.pageNumber}';
+                    }
+                }
+            });
+        })
+    }
+
+    function loadAdd(){
         $.ajax({
-            url:"${base}/manage/usergroup/deleteList" ,
+            url:"${base}/manage/usergroup/add" ,
             type:'POST',
-            data: {'ids':ids } ,
-            dataType:'json',
+//            data: {'ids':ids } ,
+            dataType:'HTML',
             success:function( result ){
-                if(result.code == 200){
-                    location.href = '${base}/manage/usergroup?cPage=${usergroupdata.pageNumber}';
+                if(result){
+                    bootbox.confirm({
+                        title : '<span style="color:#6fb3e0;">添加用户组</span>',
+                        message: result,
+                        buttons: {
+                            confirm: {
+                                label: "保存",
+                                className: "btn-primary btn-xs"
+                            },
+                            cancel: {
+                                label: "取消",
+                                className: "btn-xs"
+                            }
+                        },
+                        callback: function(result) {
+                            if(result) $('#usergroupForm').submit();
+                        }
+                    });
                 }
             }
         });

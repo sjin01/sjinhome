@@ -5,6 +5,7 @@ import com.jfinal.core.JFinal;
 import com.jfinal.render.FreeMarkerRender;
 import com.jfinal.render.ViewType;
 import com.sjin.base.BaseConfig;
+import com.sjin.controllers.manage.ssq.SsqController;
 import com.sjin.controllers.timeline.TimelineController;
 import com.sjin.controllers.index.IndexController;
 import com.sjin.controllers.manage.*;
@@ -49,6 +50,7 @@ public class SjinConfig extends BaseConfig {
         routes.add("/manage/usergroup" ,UserGroupController.class);
         routes.add("/manage/func", FuncController.class);
         routes.add("/manage/dict", DictController.class);
+        routes.add("/manage/ssq", SsqController.class);
 
     }
 

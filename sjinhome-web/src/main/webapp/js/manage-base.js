@@ -25,8 +25,8 @@ function myConfirm (confirmStr , callback ,btnname1 ,btnname2){
     if(!callback){
         callback = function (){};
     }
-    if(!btnname1){ callback = '是滴嘞';}
-    if(!btnname2){ callback = '算哒';}
+    if(!btnname1){ btnname1 = '要得咯';}
+    if(!btnname2){ btnname2 = '等哈着';}
     bootbox.confirm({
         title : '<span style="color:#6fb3e0;">操作提示</span>',
         message: confirmStr,
@@ -53,8 +53,8 @@ function myConfirmTwo (confirmStr,callback,callmain ,btnname1 ,btnname2){
     if(!callmain){
         callmain = function (){};
     }
-    if(!btnname1){ callback = '要得咯';}
-    if(!btnname2){ callback = '等哈着';}
+    if(!btnname1){ btnname1 = '是滴嘞';}
+    if(!btnname2){ btnname2 = '算哒';}
     bootbox.confirm({
         title : '<span style="color:#6fb3e0;">操作提示</span>',
         message: confirmStr,

@@ -154,3 +154,20 @@ create table t_timeline_more
 alter table t_timeline_more comment '时间轴更多说明：t_timeline_more';
 
 
+
+CREATE TABLE t_doubleball_record (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  period int(11) DEFAULT NULL COMMENT '开奖期号',
+  value int(11) DEFAULT NULL COMMENT '开奖球号',
+  type int(11) DEFAULT NULL COMMENT '1红球；2蓝球',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB COMMENT = '开奖记录' ;
+
+CREATE TABLE t_doubleball_conjecture (
+  id INT NOT NULL AUTO_INCREMENT,
+  period INT NULL,
+  value INT NULL,
+  type INT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB  COMMENT = '我的推测';
+

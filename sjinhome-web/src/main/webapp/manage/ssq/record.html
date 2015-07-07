@@ -1,0 +1,95 @@
+<#include "/manage/common/_layout.html"/>
+<@layout>
+
+<div class="page-header">
+    <h1>
+        历轮记录
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            Statistics is a very deep knowledge !
+        </small>
+    </h1>
+</div>
+
+<div class="col-xs-12">
+
+    <div class="widget-box transparent ui-sortable-handle">
+
+        <div class="widget-header">
+            <h5 class="widget-title"> 用户列表 </h5>
+
+            <div class="widget-toolbar">
+
+                <div class="action-buttons inline">
+                    <a href="javascript:void(0);" onclick="" data-rel="tooltip" data-original-title="注册用户">
+                        <i class="fa fa-plus-circle"></i>
+                    </a>
+
+                    <a class="red" href="javascript:void(0);" onclick="deleteList();" title="" data-rel="tooltip" data-original-title="批量删除">
+                        <i class="ace-icon fa fa-trash-o"></i>
+                    </a>
+                </div>&nbsp;
+                <a href="javascript:void(0);" data-action="fullscreen" class="orange2" title="" data-rel="tooltip" data-original-title="全屏查看">
+                    <i class="ace-icon fa fa-expand"></i>
+                </a>&nbsp;
+                <a href="javascript:void(0);" data-action="collapse" title="" class="" data-rel="tooltip" data-original-title="收起">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main" id="">
+
+                <table id="" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="center"  width="10%">
+                                <label class="position-relative">
+                                    <input type="checkbox" class="ace">
+                                    <span class="lbl"></span>
+                                </label>
+                            </th>
+                            <th width="10%">期号</th>
+                            <th width="10%">红球</th>
+                            <th width="10%">红球</th>
+                            <th width="10%">红球</th>
+                            <th width="10%">红球</th>
+                            <th width="10%">红球</th>
+                            <th width="10%">红球</th>
+                            <th width="10%">蓝球</th>
+                            <th width="10%">操作</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <#list record.list as item>
+                        <tr>
+                            <td class="center">
+                                <label class="position-relative">
+                                    <input type="checkbox" class="ace item" value="${item.id!}">
+                                    <span class="lbl"></span>
+                                </label>
+                            </td>
+                            <td>${item.redBall1}</td>
+                            <td>${item.redBall2}</td>
+                            <td>${item.redBall3}</td>
+                            <td>${item.redBall4}</td>
+                            <td>${item.redBall5}</td>
+                            <td>${item.redBall6}</td>
+                            <td>${item.blueBall}</td>
+                            <td>删除编辑</td>
+                        </tr>
+                        </#list>
+
+                    </tbody>
+                </table>
+                <#include "/common/_paginate-manage.html" />
+                <@paginate currentPage = record.pageNumber totalPage = record.totalPage actionUrl = "${base}/manage/ssq?page=" />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</@layout>

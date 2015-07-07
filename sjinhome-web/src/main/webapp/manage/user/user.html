@@ -72,29 +72,29 @@
 
     function deleteList(){
         if( $('.item:checkbox').filter(":checked").length < 1 ){
-            myConfirm("至少选择一条记录！");
+            myConfirm("至少选择一条记录！" );
             return false;
         }
 
-        var ids = '';
-        $('.item:checkbox').filter(":checked").each(function (){
-            ids += $(this).val() + ',';
-        })
-//        $("#ids").val(ids);
-//        $("#deleteList_form").submit();
-
-        $.ajax({
-            url:"${base}/manage/user/deleteList" ,
-            type:'POST',
-            data: {'ids':ids } ,
-            dataType:'json',
-            success:function( result ){
-                if(result.code == 200){
-                    $("#table_div").load("${base}/manage/user/list?page=${page}");
-                    myGritterSuccess('操作成功！');
+        myConfirm("你确定哈把他删噶？" ,function (){
+            var ids = '';
+            $('.item:checkbox').filter(":checked").each(function (){
+                ids += $(this).val() + ',';
+            })
+            $.ajax({
+                url:"${base}/manage/user/deleteList" ,
+                type:'POST',
+                data: {'ids':ids } ,
+                dataType:'json',
+                success:function( result ){
+                    if(result.code == 200){
+                        $("#table_div").load("${base}/manage/user/list?page=${page}");
+                        myGritterSuccess('操作成功！');
+                    }
                 }
-            }
-        });
+            });
+        })
+
     }
 
     /*var addUser_dialog;

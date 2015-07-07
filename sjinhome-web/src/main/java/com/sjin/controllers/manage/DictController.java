@@ -3,6 +3,7 @@ package com.sjin.controllers.manage;
 import com.jfinal.core.Controller;
 import com.sjin.constant.SysConstant;
 import com.sjin.model.manage.Dict;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * Title :盛通-- 临澧教育局平台
@@ -16,7 +17,7 @@ public class DictController extends Controller {
     public void index (){
 
         String page = getPara("page");
-        setAttr("dictpage", Dict.dao.paginate(Integer.valueOf(page), SysConstant.MANAGE_PAGESIZE));
+        setAttr("dictpage", Dict.dao.paginate(StringUtils.isEmpty(page)? 1:Integer.valueOf(page), SysConstant.MANAGE_PAGESIZE));
 
         render("main.html");
     }

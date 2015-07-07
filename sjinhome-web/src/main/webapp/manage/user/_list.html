@@ -54,7 +54,7 @@
             <button class="btn btn-xs btn-info" onclick="location.href='${base}/manage/user/edit/${ss.id!}'">
                 <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-            <button class="btn btn-xs btn-danger" onclick="location.href='${base}/manage/user/delete/${ss.id!}'">
+            <button class="btn btn-xs btn-danger" onclick="del(${ss.id!})">
                 <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
         </td>
@@ -66,3 +66,11 @@
 
 <#include "/common/_paginate-manage.html" />
 <@paginate currentPage = userpage.pageNumber totalPage = userpage.totalPage actionUrl = "${base}/manage/user?page=" />
+
+<script>
+    function del(id){
+        myConfirm("你确定删除？" ,function (){
+            location.href='${base}/manage/user/delete/' + id;
+        })
+    }
+</script>

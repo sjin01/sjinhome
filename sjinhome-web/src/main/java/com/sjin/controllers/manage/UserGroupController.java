@@ -1,10 +1,13 @@
 package com.sjin.controllers.manage;
 
-import com.jfinal.core.Controller;
+import com.jfinal.aop.Before;
 import com.mysql.jdbc.StringUtils;
 import com.sjin.base.BaseController;
 import com.sjin.constant.SysConstant;
+import com.sjin.interceptor.manage.ManageLoginInterceptor;
 import com.sjin.model.manage.UserGroup;
+
+import java.util.Map;
 
 /**
  * Title :www.hunanst.net
@@ -13,6 +16,7 @@ import com.sjin.model.manage.UserGroup;
  *
  * @author: guanshj QQ: 928990049
  */
+@Before(ManageLoginInterceptor.class)
 public class UserGroupController extends BaseController {
 
     public void index () {
@@ -23,7 +27,7 @@ public class UserGroupController extends BaseController {
 
     public void delete(){
         UserGroup.dao.deleteById(getParaToInt("id"));
-        redirect("/usergroup?cPage=" + getPara("cPage"));
+        redirect("/manage/usergroup?cPage=" + getPara("cPage"));
     }
 
     public void deleteList(){
@@ -31,4 +35,19 @@ public class UserGroupController extends BaseController {
         UserGroup.dao.deleteList(idsStr);
         renderJson(getSuccessfulResultMap());
     }
+
+    public void add(){
+        render("_add.html");
+    }
+
+    public void save (){
+        UserGroup usergroup = new UserGroup();
+//        usergroup.set("id", "0".equals(getPara("usergroup.id")) ? null :getPara("usergroup.id")  );
+        usergroup.set("name", getPara("usergroup.name"));
+        usergroup.set("status", getPara("usergroup.status"));
+        usergroup.set("sort", getPara("usergroup.sort"));
+        usergroup.save();
+        redirect("/manage/usergroup");
+    }
+
 }

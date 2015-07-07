@@ -1,0 +1,28 @@
+<fieldset class="solid">
+
+    <input type="hidden" name="usergroup.id" value="${(usergroup.id)!}" />
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right"> 用户组名 <span style="color: red;">*</span> </label>
+        <div class="col-sm-9">
+            <input type="text" name="usergroup.name" placeholder="用户组名" class="col-sm-5" value="${(usergroup.name)!}" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right"> 状态 <span style="color: red;">*</span> </label>
+        <div class="col-sm-9">
+            <select name="usergroup.status" id="" class="col-sm-5">
+                <option value="1" <#if (usergroup.status)?? && usergroup.status==1> selected="selected" </#if>>正常</option>
+                <option value="0" <#if (usergroup.status)?? && usergroup.status==0> selected="selected" </#if>>禁用</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right"> 排序 <span style="color: red;">*</span> </label>
+        <div class="col-sm-9">
+            <input type="text" class="input-sm col-xs-5" name="usergroup.sort" value="${(usergroup.sort)!}"/>
+        </div>
+    </div>
+</fieldset>
