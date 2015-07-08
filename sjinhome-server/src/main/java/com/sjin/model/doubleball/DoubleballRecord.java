@@ -7,6 +7,7 @@ import com.jfinal.plugin.activerecord.Record;
 import com.sjin.constant.doubleball.DoubleBallConstant;
 import com.sjin.enums.doubleball.BallType;
 import com.sjin.vo.doubleball.DoubleBallVo;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
@@ -61,6 +62,16 @@ public class DoubleballRecord extends Model<DoubleballRecord> {
      */
     public void deleteByPeriod (int period){
         Db.update("delete from t_doubleball_record where period = " + period);
+    }
+    public void deleteByPeriod (String ids) {
+        if(!StringUtils.isEmpty(ids)){
+            StringBuilder sqlsb = new StringBuilder();
+            sqlsb.append("delete from t_doubleball_record where period in ( ");
+            sqlsb.append(ids);
+            sqlsb.append(" -1) ");
+
+            Db.update(sqlsb.toString());
+        }
     }
 
     /**

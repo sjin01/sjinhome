@@ -66,7 +66,7 @@
                         <tr>
                             <td class="center">
                                 <label class="position-relative">
-                                    <input type="checkbox" class="ace item" value="${item.id!}">
+                                    <input type="checkbox" class="ace item" value="${item.period!}">
                                     <span class="lbl"></span>
                                 </label>
                             </td>
@@ -103,6 +103,7 @@
 </@layout>
 
 <script>
+    var form_validator_obj ;
     function loadadd() {
         $.ajax({
             url:"${base}/manage/ssq/add" ,
@@ -110,21 +111,58 @@
             dataType:'HTML',
             success:function( result ){
                 if(result){
-                    bootbox.confirm({
+                    bootbox.dialog({
                         title : '<span style="color:#6fb3e0;">录入数据</span>',
                         message: result,
                         buttons: {
-                            confirm: {
-                                label: "保存",
-                                className: "btn-primary btn-xs"
+                            "cancel":{
+                                "label" : "取消",
+                                "className" : "btn-xs"
                             },
-                            cancel: {
-                                label: "取消",
-                                className: "btn-xs"
+                            "ok" :{
+                                "label" : " 提交",
+                                "className" : "btn-primary btn-xs",
+                                "callback": function() {
+
+                                    if(form_validator_obj.form()){
+                                        $.ajax({
+                                            url: '${base}/manage/ssq/save' ,
+                                            data: $('#ssqForm').serialize(),
+                                            type : 'POST',
+                                            dataType : 'JSON' ,
+                                            success : function (result) {
+                                                if(result.code == 200) history.go(0);
+                                            }
+                                        })
+                                    }else{
+                                        return false;
+                                    }
+                                }
                             }
+
+                        }
+                    });
+
+                    form_validator_obj = $("#ssqForm").validate({
+                        rules: {
+                            period: { required: true, digits: true, rangelength: [7, 7] },
+                            redBall1: { required: true, digits: true, max: 33, min:1 },
+                            redBall2: { required: true, digits: true, max: 33, min:1 },
+                            redBall3: { required: true, digits: true, max: 33, min:1 },
+                            redBall4: { required: true, digits: true, max: 33, min:1 },
+                            redBall5: { required: true, digits: true, max: 33, min:1 },
+                            redBall6: { required: true, digits: true, max: 33, min:1 },
+                            blueBall: { required: true, digits: true, max: 16, min:1 }
                         },
-                        callback: function(result) {
-                            if(result) $('#ssqForm').submit();
+                        messages: {
+                            period: { required: '请输入期号', digits: '期号必须是整数', rangelength: '请输入7位数字的期号' },
+                            redBall1: { required: '请填写完整红球号码', digits: '你是逗比嘛', max:'你是逗比嘛', min:'你是逗比嘛' },
+                            redBall2: { required: '请填写完整红球号码', digits: '你是逗比嘛', max:'你是逗比嘛', min:'你是逗比嘛' },
+                            redBall3: { required: '请填写完整红球号码', digits: '你是逗比嘛', max:'你是逗比嘛', min:'你是逗比嘛' },
+                            redBall4: { required: '请填写完整红球号码', digits: '你是逗比嘛', max:'你是逗比嘛', min:'你是逗比嘛' },
+                            redBall5: { required: '请填写完整红球号码', digits: '你是逗比嘛', max:'你是逗比嘛', min:'你是逗比嘛' },
+                            redBall6: { required: '请填写完整红球号码', digits: '你是逗比嘛', max:'你是逗比嘛', min:'你是逗比嘛' },
+                            blueBall: { required: '请填写蓝球号码', digits: '你是逗比嘛', max:'你是逗比嘛', min:'你是逗比嘛' }
                         }
                     });
                 }
@@ -133,6 +171,28 @@
     }
 
     function deleteList(){
+        if( $('.item:checkbox').filter(":checked").length < 1 ){
+            myConfirm("至少选择一条记录！");
+            return false;
+        }
 
+        myConfirm("你确定哈把他删噶？" , function (){
+            var ids = '';
+            $('.item:checkbox').filter(":checked").each(function (){
+                ids += $(this).val() + ',';
+            })
+
+            $.ajax({
+                url:"${base}/manage/ssq/deleteList" ,
+                type:'POST',
+                data: {'ids':ids } ,
+                dataType:'json',
+                success:function( result ){
+                    if(result.code == 200){
+                        location.href = '${base}/manage/ssq/record?page=${record.pageNumber}';
+                    }
+                }
+            });
+        })
     }
 </script>

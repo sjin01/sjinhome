@@ -1,6 +1,7 @@
 package com.sjin.controllers.manage.ssq;
 
 import com.jfinal.core.Controller;
+import com.sjin.base.BaseController;
 import com.sjin.constant.doubleball.DoubleBallConstant;
 import com.sjin.model.doubleball.DoubleballRecord;
 import org.apache.commons.lang.StringUtils;
@@ -35,7 +36,7 @@ import org.apache.commons.lang.StringUtils;
  * @author: guanshj QQ: 928990049
  */
 
-public class SsqController extends Controller {
+public class SsqController extends BaseController {
 
     public void index (){
         redirect("/manage/ssq/record");
@@ -65,12 +66,18 @@ public class SsqController extends Controller {
                 Integer.parseInt(redBall3),Integer.parseInt(redBall4),Integer.parseInt(redBall5),Integer.parseInt(redBall6)
                 ,Integer.parseInt(blueBall) , DoubleBallConstant.FLAG_INSERT );
 
-        redirect("/manage/ssq/record");
+//        redirect("/manage/ssq/record");
+        renderJson(getSuccessfulResultMap());
     }
 
     public void delete (){
         DoubleballRecord.dao.deleteByPeriod( getParaToInt("period"));
         redirect("/manage/ssq/record");
+    }
+    public void deleteList(){
+        String idsStr = getPara("ids");
+        DoubleballRecord.dao.deleteByPeriod(idsStr);
+        renderJson(getSuccessfulResultMap());
     }
 
 }
