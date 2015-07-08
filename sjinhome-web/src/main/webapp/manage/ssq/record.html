@@ -78,7 +78,14 @@
                             <td>${item.redBall5}</td>
                             <td>${item.redBall6}</td>
                             <td>${item.blueBall}</td>
-                            <td>删除编辑</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a class="red" href="${base}/manage/ssq/delete?period=${item.period!}" title=""
+                                       data-rel="tooltip" data-original-title="删除">
+                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                         </#list>
 
