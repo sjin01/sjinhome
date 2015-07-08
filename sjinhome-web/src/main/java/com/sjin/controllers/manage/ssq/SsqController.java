@@ -44,8 +44,6 @@ public class SsqController extends BaseController {
     }
 
     public void record () {
-        String page = getPara("page");
-        setAttr("record" , DoubleballRecord.dao.getRecord( StringUtils.isEmpty(page) ? 1: Integer.parseInt(page), 1) );
         render("record.html");
     }
 
@@ -87,10 +85,10 @@ public class SsqController extends BaseController {
         renderJson(getSuccessfulResultMap());
     }
 
-    public void delete (){
+    /*public void delete (){
         DoubleballRecord.dao.deleteByPeriod( getParaToInt("period"));
         redirect("/manage/ssq/record");
-    }
+    }*/
     public void deleteList(){
         String idsStr = getPara("ids");
         DoubleballRecord.dao.deleteByPeriod(idsStr);

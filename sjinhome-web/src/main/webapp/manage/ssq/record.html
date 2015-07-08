@@ -71,8 +71,56 @@
 </@layout>
 
 <script>
+    var my_DT;
+    var my_DT_ajaxSource = '${base}/manage/ssq/recordDatatable';
+    function initDataTable() {
+        my_DT = $('#record_datatable').myDataTable({
+            "sAjaxSource": my_DT_ajaxSource ,
+            "aoColumns": [
+                {
+                    "mDataProp": function (source, type, val) {
+                        return '<label class="position-relative"><input type="checkbox" class="ace" name="" value="' + source.period + '" />' +
+                                '<span class="lbl"></span></label>';
+                    },
+                    "sClass": "center"
+                },
+                { "mDataProp": "period"},
+                { "mDataProp": "redBall1"},
+                { "mDataProp": "redBall2"},
+                { "mDataProp": "redBall3"},
+                { "mDataProp": "redBall4"},
+                { "mDataProp": "redBall5"},
+                { "mDataProp": "redBall6"},
+                { "mDataProp": "blueBall" },
+                { "mDataProp": function (source, type ,val){
+                    var htmlstr = '<div class="action-buttons">'+
+                    '<a class="red" href="javascript:void(0);" onclick="deleteOne('+source.period+')" title=""'+
+                    'data-rel="tooltip" data-original-title="删除">'+
+                    '<i class="ace-icon fa fa-trash-o bigger-120"></i>'+
+                    '</a>'+
+                    '</div>';
+                    return htmlstr;
+                }}
+
+            ],
+            "fnServerParams": function ( aoData ) {
+                /*aoData.push(
+                        { "name": "deliverid", "value": deliverid},
+                        { "name": "delivertype", "value": delivertype}
+                );*/
+            },
+            "oLanguage": {
+                "sUrl": "${base}/js/datatable/jquery.dataTables.lang.zh-CN.txt"
+            }
+        });
+    }
+
+    /**
+     * add +
+     */
     var form_validator_obj ;
     function loadadd() {
+        // load 弹出窗
         $.ajax({
             url:"${base}/manage/ssq/add" ,
             type:'POST',
@@ -92,6 +140,7 @@
                                 "className" : "btn-primary btn-xs",
                                 "callback": function() {
 
+                                    // submit 操作
                                     if(form_validator_obj.form()){
                                         $.ajax({
                                             url: '${base}/manage/ssq/save' ,
@@ -99,7 +148,11 @@
                                             type : 'POST',
                                             dataType : 'JSON' ,
                                             success : function (result) {
-                                                if(result.code == 200) history.go(0);
+                                                if(result.code == 200) {
+                                                    var oSettings = my_DT.fnSettings();
+                                                    oSettings.oApi._fnDraw(oSettings);
+                                                    myGritterSuccess('添加成功！');
+                                                }
                                             }
                                         })
                                     }else{
@@ -111,6 +164,7 @@
                         }
                     });
 
+                    // validate init
                     form_validator_obj = $("#ssqForm").validate({
                         rules: {
                             period: { required: true, digits: true, rangelength: [7, 7] },
@@ -168,41 +222,21 @@
             });
         }
     }
-
-    var my_DT;
-    var my_DT_ajaxSource = '${base}/manage/ssq/recordDatatable';
-    function initDataTable() {
-        my_DT = $('#record_datatable').myDataTable({
-            "sAjaxSource": my_DT_ajaxSource ,
-            "aoColumns": [
-                {
-                    "mDataProp": function (source, type, val) {
-                        return '<label class="position-relative"><input type="checkbox" class="ace" name="" value="' + source.period + '" />' +
-                                '<span class="lbl"></span></label>';
-                    },
-                    "sClass": "center"
-                },
-                { "mDataProp": "period"},
-                { "mDataProp": "redBall1"},
-                { "mDataProp": "redBall2"},
-                { "mDataProp": "redBall3"},
-                { "mDataProp": "redBall4"},
-                { "mDataProp": "redBall5"},
-                { "mDataProp": "redBall6"},
-                { "mDataProp": "blueBall" },
-                { "mDataProp": function (source, type ,val){
-                    return '编辑，删除';
-                }}
-
-            ],
-            "fnServerParams": function ( aoData ) {
-                /*aoData.push(
-                        { "name": "deliverid", "value": deliverid},
-                        { "name": "delivertype", "value": delivertype}
-                );*/
-            },
-            "oLanguage": {
-                "sUrl": "${base}/js/datatable/jquery.dataTables.lang.zh-CN.txt"
+    function deleteOne (period){
+        if(!period){
+            return false;
+        }
+        $.ajax({
+            url:"${base}/manage/ssq/deleteList" ,
+            type:'POST',
+            data: {'ids': period + ',' } ,
+            dataType:'json',
+            success:function( result ){
+                if(result.code == 200){
+                    var oSettings = my_DT.fnSettings();
+                    oSettings.oApi._fnDraw(oSettings);
+                    myGritterSuccess('删除成功！');
+                }
             }
         });
     }
