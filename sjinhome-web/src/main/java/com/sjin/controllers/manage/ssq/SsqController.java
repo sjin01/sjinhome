@@ -2,6 +2,7 @@ package com.sjin.controllers.manage.ssq;
 
 import com.jfinal.core.Controller;
 import com.sjin.base.BaseController;
+import com.sjin.constant.SysConstant;
 import com.sjin.constant.doubleball.DoubleBallConstant;
 import com.sjin.model.doubleball.DoubleballRecord;
 import org.apache.commons.lang.StringUtils;
@@ -44,8 +45,24 @@ public class SsqController extends BaseController {
 
     public void record () {
         String page = getPara("page");
-        setAttr("record" , DoubleballRecord.dao.getRecord( StringUtils.isEmpty(page) ? 1: Integer.parseInt(page), 20) );
+        setAttr("record" , DoubleballRecord.dao.getRecord( StringUtils.isEmpty(page) ? 1: Integer.parseInt(page), 1) );
         render("record.html");
+    }
+
+    public void recordDatatable() {
+        Integer iDisplayStart = getParaToInt("iDisplayStart");
+        Integer pagesize = getParaToInt("iDisplayLength");
+
+        if(iDisplayStart == null || iDisplayStart==0) iDisplayStart = 0;
+        if(pagesize == null || pagesize==0) pagesize = SysConstant.MANAGE_PAGESIZE;
+
+        int page = iDisplayStart / pagesize + 1;
+
+        renderJson(
+                getSuccessResultMapDataTable(
+                        DoubleballRecord.dao.getRecord(page, pagesize), getPara("sEcho")
+                )
+        );
     }
 
     public void add (){

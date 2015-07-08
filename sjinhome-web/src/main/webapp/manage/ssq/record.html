@@ -40,7 +40,7 @@
         <div class="widget-body">
             <div class="widget-main" id="">
 
-                <table id="" class="table table-hover">
+                <table id="record_datatable" class="table table-hover">
                     <thead>
                         <tr>
                             <th class="center"  width="10%">
@@ -60,39 +60,7 @@
                             <th width="10%">操作</th>
                         </tr>
                     </thead>
-
-                    <tbody>
-                        <#list record.list as item>
-                        <tr>
-                            <td class="center">
-                                <label class="position-relative">
-                                    <input type="checkbox" class="ace item" value="${item.period!}">
-                                    <span class="lbl"></span>
-                                </label>
-                            </td>
-                            <td>${item.period}</td>
-                            <td>${item.redBall1}</td>
-                            <td>${item.redBall2}</td>
-                            <td>${item.redBall3}</td>
-                            <td>${item.redBall4}</td>
-                            <td>${item.redBall5}</td>
-                            <td>${item.redBall6}</td>
-                            <td>${item.blueBall}</td>
-                            <td>
-                                <div class="action-buttons">
-                                    <a class="red" href="${base}/manage/ssq/delete?period=${item.period!}" title=""
-                                       data-rel="tooltip" data-original-title="删除">
-                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        </#list>
-
-                    </tbody>
                 </table>
-                <#include "/common/_paginate-manage.html" />
-                <@paginate currentPage = record.pageNumber totalPage = record.totalPage actionUrl = "${base}/manage/ssq?page=" />
 
             </div>
         </div>
@@ -171,28 +139,75 @@
     }
 
     function deleteList(){
-        if( $('.item:checkbox').filter(":checked").length < 1 ){
+        var ids = [];
+        $.each(my_DT.getSelectedData(), function(i, n){
+            ids.push(n.period);
+        });
+        if(ids.length == 0){
             myConfirm("至少选择一条记录！");
-            return false;
-        }
-
-        myConfirm("你确定哈把他删噶？" , function (){
-            var ids = '';
-            $('.item:checkbox').filter(":checked").each(function (){
-                ids += $(this).val() + ',';
-            })
-
-            $.ajax({
-                url:"${base}/manage/ssq/deleteList" ,
-                type:'POST',
-                data: {'ids':ids } ,
-                dataType:'json',
-                success:function( result ){
-                    if(result.code == 200){
-                        location.href = '${base}/manage/ssq/record?page=${record.pageNumber}';
-                    }
+            return false;;
+        }else{
+            myConfirm("选中"+ids.length+"记录，您确定要删除这些公文草稿数据吗？" ,function (){
+                var idsstr = '';
+                for(var i=0 ; i < ids.length ; i++){
+                    idsstr += ids[i] + ',';
                 }
+                $.ajax({
+                    url:"${base}/manage/ssq/deleteList" ,
+                    type:'POST',
+                    data: {'ids': idsstr } ,
+                    dataType:'json',
+                    success:function( result ){
+                        if(result.code == 200){
+                            var oSettings = my_DT.fnSettings();
+                            oSettings.oApi._fnDraw(oSettings);
+                            myGritterSuccess('删除成功！');
+                        }
+                    }
+                });
             });
-        })
+        }
     }
+
+    var my_DT;
+    var my_DT_ajaxSource = '${base}/manage/ssq/recordDatatable';
+    function initDataTable() {
+        my_DT = $('#record_datatable').myDataTable({
+            "sAjaxSource": my_DT_ajaxSource ,
+            "aoColumns": [
+                {
+                    "mDataProp": function (source, type, val) {
+                        return '<label class="position-relative"><input type="checkbox" class="ace" name="" value="' + source.period + '" />' +
+                                '<span class="lbl"></span></label>';
+                    },
+                    "sClass": "center"
+                },
+                { "mDataProp": "period"},
+                { "mDataProp": "redBall1"},
+                { "mDataProp": "redBall2"},
+                { "mDataProp": "redBall3"},
+                { "mDataProp": "redBall4"},
+                { "mDataProp": "redBall5"},
+                { "mDataProp": "redBall6"},
+                { "mDataProp": "blueBall" },
+                { "mDataProp": function (source, type ,val){
+                    return '编辑，删除';
+                }}
+
+            ],
+            "fnServerParams": function ( aoData ) {
+                /*aoData.push(
+                        { "name": "deliverid", "value": deliverid},
+                        { "name": "delivertype", "value": delivertype}
+                );*/
+            },
+            "oLanguage": {
+                "sUrl": "${base}/js/datatable/jquery.dataTables.lang.zh-CN.txt"
+            }
+        });
+    }
+
+    $(function (){
+        initDataTable();
+    })
 </script>
