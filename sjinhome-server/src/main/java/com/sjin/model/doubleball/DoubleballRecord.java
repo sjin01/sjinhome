@@ -55,6 +55,17 @@ public class DoubleballRecord extends Model<DoubleballRecord> {
         String sqlstr2 = " from t_doubleball_record group by period order by period desc";
         return Db.paginate(pageNumber,pageSize , sqlstr , sqlstr2 );
     }
+    public Record getRecordByPeriod (int period) {
+        String sqlstr = "select period , max(case type when 11 then value else null end) redBall1," +
+                "max(case type when 12 then value else null end) redBall2, " +
+                "max(case type when 13 then value else null end) redBall3, " +
+                "max(case type when 14 then value else null end) redBall4, " +
+                "max(case type when 15 then value else null end) redBall5, " +
+                "max(case type when 16 then value else null end) redBall6, " +
+                "max(case type when 2 then value else null end) blueBall " +
+                " from t_doubleball_record where period = " + period;
+        return Db.findFirst(sqlstr);
+    }
 
     /**
      * 根据期号删除 开奖数据

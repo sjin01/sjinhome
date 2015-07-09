@@ -64,8 +64,15 @@ public class SsqController extends BaseController {
         );
     }
 
-    public void add (){
-        render("_add.html");
+    public void loadEditDialog (){
+        int period = getParaToInt("period");
+        if(period >0 ){
+            setAttr("flag" , DoubleBallConstant.FLAG_UPDATE);
+            setAttr("record" , DoubleballRecord.dao.getRecordByPeriod(period) ) ;
+        }else{
+            setAttr("flag" , DoubleBallConstant.FLAG_INSERT);
+        }
+        render("_editDialog.html");
     }
 
     public void save () throws Exception {
@@ -78,9 +85,11 @@ public class SsqController extends BaseController {
         String redBall6 = getPara("redBall6");
         String blueBall = getPara("blueBall");
 
+        String flag = getPara("flag");
+
         DoubleballRecord.dao.saveDoubleBallRecord(Integer.parseInt(period) ,Integer.parseInt(redBall1),Integer.parseInt(redBall2),
                 Integer.parseInt(redBall3),Integer.parseInt(redBall4),Integer.parseInt(redBall5),Integer.parseInt(redBall6)
-                ,Integer.parseInt(blueBall) , DoubleBallConstant.FLAG_INSERT );
+                ,Integer.parseInt(blueBall) , flag );
 
 //        redirect("/manage/ssq/record");
         renderJson(getSuccessfulResultMap());

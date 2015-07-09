@@ -21,7 +21,7 @@
             <div class="widget-toolbar">
 
                 <div class="action-buttons inline">
-                    <a href="javascript:void(0);" onclick="loadadd();" data-rel="tooltip" data-original-title="录入数据">
+                    <a href="javascript:void(0);" onclick="loadEditDialog();" data-rel="tooltip" data-original-title="录入数据">
                         <i class="fa fa-plus-circle"></i>
                     </a>
 
@@ -94,9 +94,13 @@
                 { "mDataProp": "blueBall" },
                 { "mDataProp": function (source, type ,val){
                     var htmlstr = '<div class="action-buttons">'+
+                    '<a class="info" href="javascript:void(0);" onclick="loadEditDialog('+source.period+')" title=""'+
+                        'data-rel="tooltip" data-original-title="编辑">'+
+                        '<i class="ace-icon fa fa-pencil bigger-120"></i>'+
+                    '</a>'+
                     '<a class="red" href="javascript:void(0);" onclick="deleteOne('+source.period+')" title=""'+
-                    'data-rel="tooltip" data-original-title="删除">'+
-                    '<i class="ace-icon fa fa-trash-o bigger-120"></i>'+
+                        'data-rel="tooltip" data-original-title="删除">'+
+                        '<i class="ace-icon fa fa-trash-o bigger-120"></i>'+
                     '</a>'+
                     '</div>';
                     return htmlstr;
@@ -116,13 +120,17 @@
     }
 
     /**
-     * add +
+     * loadEditDialog +
      */
     var form_validator_obj ;
-    function loadadd() {
+    function loadEditDialog(period) {
+
+        if(!period) period = -1;
+
         // load 弹出窗
         $.ajax({
-            url:"${base}/manage/ssq/add" ,
+            url:"${base}/manage/ssq/loadEditDialog" ,
+            data : {'period' : period },
             type:'POST',
             dataType:'HTML',
             success:function( result ){
