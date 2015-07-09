@@ -1,5 +1,7 @@
 package com.sjin.vo.doubleball;
 
+import com.jfinal.plugin.activerecord.Model;
+
 /**
  * Title :www.hunanst.net
  * Description:
@@ -7,7 +9,8 @@ package com.sjin.vo.doubleball;
  *
  * @author: guanshj QQ: 928990049
  */
-public class DoubleBallVo {
+public class DoubleBallDto {
+
     private Integer period;
 
     private Integer redBall1;
@@ -18,6 +21,7 @@ public class DoubleBallVo {
     private Integer redBall6;
 
     private Integer blueBall;
+    private String flag;
 
     public Integer getPeriod() {
         return period;
@@ -81,5 +85,13 @@ public class DoubleBallVo {
 
     public void setBlueBall(Integer blueBall) {
         this.blueBall = blueBall;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }

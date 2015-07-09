@@ -6,10 +6,8 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import com.sjin.constant.doubleball.DoubleBallConstant;
 import com.sjin.enums.doubleball.BallType;
-import com.sjin.vo.doubleball.DoubleBallVo;
+import com.sjin.vo.doubleball.DoubleBallDto;
 import org.apache.commons.lang.StringUtils;
-
-import java.util.List;
 
 /**
  * Description:
@@ -87,36 +85,36 @@ public class DoubleballRecord extends Model<DoubleballRecord> {
 
     /**
      * 保存 开奖记录
-     * @param period  期号
-     * @param redBall1 红球
-     * @param redBall2
-     * @param redBall3
-     * @param redBall4
-     * @param redBall5
-     * @param redBall6
-     * @param blueBall 蓝球
-     * @param flag 状态 1：新增；2：修改
+     * @param dto (DoubleBallDto);
+     *  period  期号
+     *  redBall1 红球
+     *  redBall2
+     *  redBall3
+     *  redBall4
+     *  redBall5
+     *  redBall6
+     *  blueBall 蓝球
+     *  flag 状态 1：新增；2：修改
      * @throws Exception
      */
-    public void saveDoubleBallRecord (Integer period, Integer redBall1, Integer redBall2,
-                                      Integer redBall3, Integer redBall4, Integer redBall5,
-                                      Integer redBall6, Integer blueBall ,String flag) throws Exception {
+    public void saveDoubleBallRecord (DoubleBallDto dto ) throws Exception {
         // step1 : validate data
-        if (period == null || redBall1 == null || redBall2 == null || redBall3 == null || redBall4 == null || redBall5 == null || redBall6 == null || blueBall == null) {
+        if (dto.getPeriod() == null || dto.getRedBall1() == null || dto.getRedBall2() == null || dto.getRedBall3() == null
+                || dto.getRedBall4() == null || dto.getRedBall5() == null || dto.getRedBall6() == null || dto.getBlueBall() == null) {
             System.out.println("参数不正确");
             throw new Exception();
         }
 
-        if(flag.equals(DoubleBallConstant.FLAG_UPDATE)){
+        if(DoubleBallConstant.FLAG_UPDATE.equals(dto.getFlag())){
             // 清理数据
-            deleteByPeriod(period);
+            deleteByPeriod(dto.getPeriod());
         }
 
         // step2 : 保存 数据
         //红球1
         DoubleballRecord redBall1_Record = new DoubleballRecord();
-        redBall1_Record.set("period", period);
-        redBall1_Record.set("value", redBall1);
+        redBall1_Record.set("period", dto.getPeriod());
+        redBall1_Record.set("value", dto.getRedBall1());
         redBall1_Record.set("type", BallType.RED1.getCode());
 
         redBall1_Record.save();
@@ -124,48 +122,48 @@ public class DoubleballRecord extends Model<DoubleballRecord> {
 
         //红球2
         DoubleballRecord redBall2_Record = new DoubleballRecord();
-        redBall2_Record.set("period", period);
-        redBall2_Record.set("value", redBall2);
+        redBall2_Record.set("period", dto.getPeriod());
+        redBall2_Record.set("value", dto.getRedBall2());
         redBall2_Record.set("type", BallType.RED2.getCode());
 
         redBall2_Record.save();
 
         //红球3
         DoubleballRecord redBall3_Record = new DoubleballRecord();
-        redBall3_Record.set("period", period);
-        redBall3_Record.set("value", redBall3);
+        redBall3_Record.set("period", dto.getPeriod());
+        redBall3_Record.set("value", dto.getRedBall3());
         redBall3_Record.set("type", BallType.RED3.getCode());
 
         redBall3_Record.save();
 
         //红球4
         DoubleballRecord redBall4_Record = new DoubleballRecord();
-        redBall4_Record.set("period", period);
-        redBall4_Record.set("value", redBall4);
+        redBall4_Record.set("period", dto.getPeriod());
+        redBall4_Record.set("value", dto.getRedBall4());
         redBall4_Record.set("type", BallType.RED4.getCode());
 
         redBall4_Record.save();
 
         //红球5
         DoubleballRecord redBall5_Record = new DoubleballRecord();
-        redBall5_Record.set("period", period);
-        redBall5_Record.set("value", redBall5);
+        redBall5_Record.set("period", dto.getPeriod());
+        redBall5_Record.set("value", dto.getRedBall5());
         redBall5_Record.set("type", BallType.RED5.getCode());
 
         redBall5_Record.save();
 
         //红球6
         DoubleballRecord redBall6_Record = new DoubleballRecord();
-        redBall6_Record.set("period", period);
-        redBall6_Record.set("value", redBall6);
+        redBall6_Record.set("period", dto.getPeriod());
+        redBall6_Record.set("value", dto.getRedBall6());
         redBall6_Record.set("type", BallType.RED6.getCode());
 
         redBall6_Record.save();
 
         // 蓝球
         DoubleballRecord blueBall_Record = new DoubleballRecord();
-        blueBall_Record.set("period", period);
-        blueBall_Record.set("value", blueBall);
+        blueBall_Record.set("period", dto.getPeriod());
+        blueBall_Record.set("value", dto.getBlueBall());
         blueBall_Record.set("type",BallType.BLUE.getCode());
 
         blueBall_Record.save();

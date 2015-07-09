@@ -209,7 +209,7 @@
             myConfirm("至少选择一条记录！");
             return false;;
         }else{
-            myConfirm("选中"+ids.length+"记录，您确定要删除这些公文草稿数据吗？" ,function (){
+            myConfirm("选中"+ids.length+"记录，您确定要删除数据吗？" ,function (){
                 var idsstr = '';
                 for(var i=0 ; i < ids.length ; i++){
                     idsstr += ids[i] + ',';
@@ -234,19 +234,21 @@
         if(!period){
             return false;
         }
-        $.ajax({
-            url:"${base}/manage/ssq/deleteList" ,
-            type:'POST',
-            data: {'ids': period + ',' } ,
-            dataType:'json',
-            success:function( result ){
-                if(result.code == 200){
-                    var oSettings = my_DT.fnSettings();
-                    oSettings.oApi._fnDraw(oSettings);
-                    myGritterSuccess('删除成功！');
+        myConfirm("真滴要删噶？你莫后悔啦！", function (){
+            $.ajax({
+                url:"${base}/manage/ssq/deleteList" ,
+                type:'POST',
+                data: {'ids': period + ',' } ,
+                dataType:'json',
+                success:function( result ){
+                    if(result.code == 200){
+                        var oSettings = my_DT.fnSettings();
+                        oSettings.oApi._fnDraw(oSettings);
+                        myGritterSuccess('删除成功！');
+                    }
                 }
-            }
-        });
+            });
+        } ,"我叫不后悔", "点错哒");
     }
 
     $(function (){

@@ -6,6 +6,7 @@ import com.sjin.constant.DataTableParam;
 import com.sjin.constant.SysConstant;
 import com.sjin.constant.doubleball.DoubleBallConstant;
 import com.sjin.model.doubleball.DoubleballRecord;
+import com.sjin.vo.doubleball.DoubleBallDto;
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -76,22 +77,7 @@ public class SsqController extends BaseController {
     }
 
     public void save () throws Exception {
-        String period = getPara("period");
-        String redBall1 = getPara("redBall1");
-        String redBall2 = getPara("redBall2");
-        String redBall3 = getPara("redBall3");
-        String redBall4 = getPara("redBall4");
-        String redBall5 = getPara("redBall5");
-        String redBall6 = getPara("redBall6");
-        String blueBall = getPara("blueBall");
-
-        String flag = getPara("flag");
-
-        DoubleballRecord.dao.saveDoubleBallRecord(Integer.parseInt(period) ,Integer.parseInt(redBall1),Integer.parseInt(redBall2),
-                Integer.parseInt(redBall3),Integer.parseInt(redBall4),Integer.parseInt(redBall5),Integer.parseInt(redBall6)
-                ,Integer.parseInt(blueBall) , flag );
-
-//        redirect("/manage/ssq/record");
+        DoubleballRecord.dao.saveDoubleBallRecord( getModel(DoubleBallDto.class) );
         renderJson(getSuccessfulResultMap());
     }
 
