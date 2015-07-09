@@ -53,7 +53,7 @@ function showErrorTxt(errorMessage , errorElement){
     var _htmlStr = '<div class="alert alert-danger">'+
     '<strong>'+
     '<i class="ace-icon fa fa-times"></i>'+
-    ' 你噶咋蠢卵！'+
+    ' 错嘎达 ！'+
     '</strong>'+ errorMessage +
     '</div>';
 
