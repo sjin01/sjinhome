@@ -72,7 +72,7 @@
 
 <script>
     var my_DT;
-    var my_DT_ajaxSource = '${base}/manage/ssq/recordDatatable';
+    var my_DT_ajaxSource = '${base}/manage/ssq/record/recordDatatable';
     function initDataTable() {
         my_DT = $('#record_datatable').myDataTable({
             "sAjaxSource": my_DT_ajaxSource ,
@@ -129,7 +129,7 @@
 
         // load 弹出窗
         $.ajax({
-            url:"${base}/manage/ssq/loadEditDialog" ,
+            url:"${base}/manage/ssq/record/loadEditDialog" ,
             data : {'period' : period },
             type:'POST',
             dataType:'HTML',
@@ -151,7 +151,7 @@
                                     // submit 操作
                                     if(form_validator_obj.form()){
                                         $.ajax({
-                                            url: '${base}/manage/ssq/save' ,
+                                            url: '${base}/manage/ssq/record/save' ,
                                             data: $('#ssqForm').serialize(),
                                             type : 'POST',
                                             dataType : 'JSON' ,
@@ -215,7 +215,7 @@
                     idsstr += ids[i] + ',';
                 }
                 $.ajax({
-                    url:"${base}/manage/ssq/deleteList" ,
+                    url:"${base}/manage/ssq/record/deleteList" ,
                     type:'POST',
                     data: {'ids': idsstr } ,
                     dataType:'json',
@@ -236,7 +236,7 @@
         }
         myConfirm("真滴要删噶？你莫后悔啦！", function (){
             $.ajax({
-                url:"${base}/manage/ssq/deleteList" ,
+                url:"${base}/manage/ssq/record/deleteList" ,
                 type:'POST',
                 data: {'ids': period + ',' } ,
                 dataType:'json',

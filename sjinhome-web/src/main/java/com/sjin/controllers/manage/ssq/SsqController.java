@@ -6,6 +6,7 @@ import com.sjin.constant.DataTableParam;
 import com.sjin.constant.SysConstant;
 import com.sjin.constant.doubleball.DoubleBallConstant;
 import com.sjin.model.doubleball.DoubleballRecord;
+import com.sjin.services.manage.sqq.DoubleballRecordService;
 import com.sjin.vo.doubleball.DoubleBallDto;
 import org.apache.commons.lang.StringUtils;
 
@@ -42,10 +43,6 @@ import org.apache.commons.lang.StringUtils;
 public class SsqController extends BaseController {
 
     public void index (){
-        redirect("/manage/ssq/record");
-    }
-
-    public void record () {
         render("record.html");
     }
 
@@ -77,7 +74,7 @@ public class SsqController extends BaseController {
     }
 
     public void save () throws Exception {
-        DoubleballRecord.dao.saveDoubleBallRecord( getModel(DoubleBallDto.class) );
+        DoubleballRecordService.service.saveDoubleBallRecord( getModel(DoubleBallDto.class) );
         renderJson(getSuccessfulResultMap());
     }
 
