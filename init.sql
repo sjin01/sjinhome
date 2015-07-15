@@ -171,3 +171,22 @@ CREATE TABLE t_doubleball_conjecture (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB  COMMENT = '我的推测';
 
+
+CREATE TABLE t_doubleball_rule (
+id  int NULL AUTO_INCREMENT COMMENT '主键' ,
+code  varchar(20) NULL COMMENT '规则编号：如SH1 SL1 等' ,
+txt  varchar(1024) NULL COMMENT '规则描述',
+PRIMARY KEY (id)
+) ENGINE=InnoDB  COMMENT = '杀球规则基础表';
+
+CREATE TABLE t_doubleball_rule_analyze (
+id  int NULL AUTO_INCREMENT COMMENT '主键' ,
+code  varchar(20) NULL COMMENT '规则编号：如SH1 SL1 等' ,
+period  int NULL COMMENT '期号' ,
+analyze  varchar(200) NULL COMMENT '分析：多个号码用逗号分隔' ,
+result  int NULL COMMENT '结果：1对；0错' ,
+PRIMARY KEY (id)
+) ENGINE=InnoDB  COMMENT = '杀球规则分析表';
+
+
+
