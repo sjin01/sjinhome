@@ -45,16 +45,18 @@ public class DoubleballRecord extends Model<DoubleballRecord> {
      * @return
      */
     public Page<Record> getRecord(int pageNumber, int pageSize) {
-        String sqlstr = "select period , max(case type when 11 then value else null end) redBall1," +
+        String sqlstr = "select A.* , f.partition3,f.partition4,f.partition7 ,f.partition3break ,f.partition4break,f.partition7break,f.size,f.oddeven,f.sum,f.span,f.first,f.last from (" +
+                "select period , max(case type when 11 then value else null end) redBall1," +
                 "max(case type when 12 then value else null end) redBall2, " +
                 "max(case type when 13 then value else null end) redBall3, " +
                 "max(case type when 14 then value else null end) redBall4, " +
                 "max(case type when 15 then value else null end) redBall5, " +
                 "max(case type when 16 then value else null end) redBall6, " +
-                "max(case type when 2 then value else null end) blueBall " ;
-
-        String sqlstr2 = " from t_doubleball_record group by period order by period desc";
-        return Db.paginate(pageNumber,pageSize , sqlstr , sqlstr2 );
+                "max(case type when 2 then value else null end) blueBall " +
+                " from t_doubleball_record group by period order by period desc " +
+                ") A " +
+                "LEFT JOIN t_doubleball_record_feature f on f.period = A.period";
+        return Db.paginate(pageNumber,pageSize , sqlstr , "" );
     }
     public Record getRecordByPeriod (int period) {
         String sqlstr = "select period , max(case type when 11 then value else null end) redBall1," +

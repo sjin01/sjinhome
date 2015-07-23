@@ -4,10 +4,7 @@ import com.jfinal.config.*;
 import com.jfinal.i18n.I18N;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
-import com.sjin.model.doubleball.DoubleballConjecture;
-import com.sjin.model.doubleball.DoubleballRecord;
-import com.sjin.model.doubleball.DoubleballRule;
-import com.sjin.model.doubleball.DoubleballRuleAnalyze;
+import com.sjin.model.doubleball.*;
 import com.sjin.model.manage.*;
 import com.sjin.model.timeline.Timeline;
 import com.sjin.model.timeline.TimelineMore;
@@ -66,6 +63,8 @@ public class BaseConfig extends JFinalConfig {
         arp.addMapping("t_timeline_more", TimelineMore.class);
 
         arp.addMapping("t_doubleball_record", DoubleballRecord.class);
+        arp.addMapping("t_doubleball_record_feature", DoubleballRecordFeature.class);
+
         arp.addMapping("t_doubleball_conjecture", DoubleballConjecture.class);
         arp.addMapping("t_doubleball_rule", DoubleballRule.class);
         arp.addMapping("t_doubleball_rule_analyze", DoubleballRuleAnalyze.class);

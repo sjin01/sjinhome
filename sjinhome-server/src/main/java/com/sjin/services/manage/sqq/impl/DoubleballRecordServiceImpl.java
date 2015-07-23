@@ -3,7 +3,9 @@ package com.sjin.services.manage.sqq.impl;
 import com.sjin.constant.doubleball.DoubleBallConstant;
 import com.sjin.enums.doubleball.BallType;
 import com.sjin.model.doubleball.DoubleballRecord;
+import com.sjin.model.doubleball.DoubleballRecordFeature;
 import com.sjin.services.manage.sqq.DoubleballRecordService;
+import com.sjin.util.doubleball.FeatureUtil;
 import com.sjin.vo.doubleball.DoubleBallDto;
 
 import java.util.ArrayList;
@@ -120,5 +122,44 @@ public class DoubleballRecordServiceImpl implements DoubleballRecordService {
         blueBall_Record.set("type",BallType.BLUE.getCode());
 
         blueBall_Record.save();
+
+        /**
+         * 更新 特征
+         */
+        updateRecordFeature(dto.getPeriod());
+    }
+
+    @Override
+    public void updateRecordFeature(int period) throws Exception {
+        List<Integer> redList = getInt(DoubleballRecord.dao.getRedByPeriod(period));
+        boolean isnew = false;
+
+        DoubleballRecordFeature feature = DoubleballRecordFeature.dao.getFeatureByPeriod(period);
+        if(feature == null){
+            feature = new DoubleballRecordFeature();
+            feature.set("period" , period);
+            isnew = true;
+        }
+
+        feature.set("partition3" , FeatureUtil.getPartition3(redList) );
+        feature.set("partition4" , FeatureUtil.getPartition4(redList) );
+        feature.set("partition7" , FeatureUtil.getPartition7(redList) );
+
+        feature.set("partition3break" , FeatureUtil.getPartition3break(redList) );
+        feature.set("partition4break" , FeatureUtil.getPartition4break(redList) );
+        feature.set("partition7break" , FeatureUtil.getPartition7break(redList) );
+
+        feature.set("size", FeatureUtil.getSizeRatio(redList) );
+        feature.set("oddeven", FeatureUtil.getOddeven(redList) );
+        feature.set("sum", FeatureUtil.getSum(redList) );
+        feature.set("span", FeatureUtil.getSpan(redList) );
+        feature.set("first", FeatureUtil.getFirst(redList) );
+        feature.set("last", FeatureUtil.getLast(redList) );
+
+        if(isnew){
+            feature.save();
+        }else{
+            feature.update();
+        }
     }
 }

@@ -35,4 +35,11 @@ public interface DoubleballRecordService {
      * @throws Exception
      */
     public void saveDoubleBallRecord (DoubleBallDto dto ) throws Exception ;
+
+    /**
+     * 根据期号更新 开奖记录特征
+     * @param period
+     * @throws Exception
+     */
+    public void updateRecordFeature (int period) throws Exception;
 }

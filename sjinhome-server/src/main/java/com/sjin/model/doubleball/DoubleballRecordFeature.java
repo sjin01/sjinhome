@@ -1,5 +1,6 @@
 package com.sjin.model.doubleball;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 
@@ -45,4 +46,8 @@ public class DoubleballRecordFeature extends Model<DoubleballRecordFeature> {
     public DoubleballRecordFeature getFeatureByPeriod (int period){
         return dao.findFirst("select * from t_doubleball_record_feature where period = ?" , period);
     }
+
+    /*public void deleteByPeriod (int period){
+        Db.update("delete from t_doubleball_record_feature where period = ?" , period);
+    }*/
 }

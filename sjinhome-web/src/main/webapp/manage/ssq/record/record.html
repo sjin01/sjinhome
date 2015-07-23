@@ -43,21 +43,27 @@
                 <table id="record_datatable" class="table table-hover">
                     <thead>
                         <tr>
-                            <th class="center"  width="10%">
+                            <th class="center"  width="5%" rowspan="2">
                                 <label class="position-relative">
                                     <input type="checkbox" class="ace">
                                     <span class="lbl"></span>
                                 </label>
                             </th>
-                            <th width="10%">期号</th>
-                            <th width="10%">红球</th>
-                            <th width="10%">红球</th>
-                            <th width="10%">红球</th>
-                            <th width="10%">红球</th>
-                            <th width="10%">红球</th>
+                            <th width="10%" rowspan="2">期号</th>
+                            <th width="20%" colspan="2">开奖记录</th>
+                            <th width="35%" colspan="7">特征</th>
+                            <th width="5%" rowspan="2">操作</th>
+                        </tr>
+                        <tr>
                             <th width="10%">红球</th>
                             <th width="10%">蓝球</th>
-                            <th width="10%">操作</th>
+                            <th>三分</th>
+                            <th>四分</th>
+                            <th>七分</th>
+                            <th>大小</th>
+                            <th>奇偶</th>
+                            <th>和值</th>
+                            <th>跨度</th>
                         </tr>
                     </thead>
                 </table>
@@ -85,13 +91,22 @@
                     "sClass": "center"
                 },
                 { "mDataProp": "period"},
-                { "mDataProp": "redBall1"},
-                { "mDataProp": "redBall2"},
-                { "mDataProp": "redBall3"},
-                { "mDataProp": "redBall4"},
-                { "mDataProp": "redBall5"},
-                { "mDataProp": "redBall6"},
-                { "mDataProp": "blueBall" },
+                { "mDataProp": function (source , type, val){
+                    return '<span class="red">'+source.redBall1+','+source.redBall2+','+source.redBall3+','+source.redBall4+','+source.redBall5+','+source.redBall6 +'</span>';
+                }},
+                { "mDataProp": function (source ,type,val){
+                    return '<span class="blue">'+source.blueBall+'</span>'
+                } },
+                /*{ "mDataProp": function (source,type,val){
+                    return "三分区：2-2-2 四分区：4-3-1-0 七分区：9-9-9-9-9-9-9 大小比：4:2 奇偶比：2:3 和值：119 跨度：19"
+                }},*/
+                { "mDataProp": "partition3" },
+                { "mDataProp": "partition4" },
+                { "mDataProp": "partition7" },
+                { "mDataProp": "size" },
+                { "mDataProp": "oddeven" },
+                { "mDataProp": "sum" },
+                { "mDataProp": "span" },
                 { "mDataProp": function (source, type ,val){
                     var htmlstr = '<div class="action-buttons">'+
                     '<a class="info" href="javascript:void(0);" onclick="loadEditDialog('+source.period+')" title=""'+
