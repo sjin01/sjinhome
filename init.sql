@@ -188,5 +188,25 @@ result  int NULL COMMENT '结果：1对；0错' ,
 PRIMARY KEY (id)
 ) ENGINE=InnoDB  COMMENT = '杀球规则分析表';
 
+create table t_doubleball_record_feature (
+   id                   int not null auto_increment comment '主键',
+   period               int comment '开奖期号',
+   partition3           varchar(20) comment '1-11、12-22、23-33三个分区的比例；如2-2-2',
+   partition4           varchar(20) comment '1-8、9-16、18-25、26-33四个分区的比例；如2-2-2-0',
+   partition7           varchar(20) comment '1-5、6-10、11-15、16-20、21-25、26-30、31-33七个分区的比例；如2-2-2-0-0-0-0',
+   partition3break      varchar(20) comment '多个用“，”逗号隔开',
+   partition4break      varchar(20) comment '多个用“，”逗号隔开',
+   partition7break      varchar(20) comment '多个用“，”逗号隔开',
+   size                 varchar(10),
+   oddeven              varchar(10),
+   sum                  int,
+   span                 int,
+   first                int,
+   last                 int,
+   primary key (id)
+) engine=innodb comment = '开奖记录特征';
+
+
+
 
 
