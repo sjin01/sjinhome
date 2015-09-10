@@ -1,5 +1,7 @@
 package com.sjin.util.doubleball;
 
+import com.sjin.enums.doubleball.AnalyzeEnum;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +44,146 @@ public class AnalyzeUtil {
      *  sRed 12 -17 是 出号顺序
      *  ****************************
      */
+    /**
+     * 综合分析方法
+     * @return
+     */
+    public static List<Integer> analyze (Integer analyzeCode ,List<Integer> redList ,Integer blue ,Integer blue2){
+        List<Integer> resultList = new ArrayList<Integer>();
+        switch (AnalyzeEnum.get(analyzeCode)){
+            case SH1:
+                resultList.add(sRed1(redList));
+                break;
+            case SH2:
+                resultList.add(sRed2(redList));
+                break;
+            case SH3:
+                resultList.add(sRed3(redList));
+                break;
+            case SH4:
+                resultList.add(sRed4(redList));
+                break;
+            case SH5:
+                resultList.add(sRed5(redList, blue));
+                break;
+            case SH6:
+                resultList.add(sRed6(redList));
+                break;
+            case SH7:
+                resultList.add(sRed7(redList));
+                break;
+            case SH8:
+                resultList.add(sRed8(redList));
+                break;
+            case SH9:
+                resultList.add(sRed9(redList));
+                break;
+            case SH10:
+                resultList.add(sRed10(redList));
+                break;
+            case SH11:
+                resultList.add(sRed11(redList, blue));
+                break;
+            case SH12:
+                resultList.add(sRed12(redList));
+                break;
+            case SH13:
+                resultList.add(sRed13(redList));
+                break;
+            case SH14:
+                resultList.add(sRed14(redList));
+                break;
+            case SH15:
+                resultList.add(sRed15(redList, blue));
+                break;
+            case SH16:
+                resultList.add(sRed16(redList, blue));
+                break;
+            case SH17:
+                resultList.add(sRed17(redList, blue));
+                break;
+            case SH18:
+                resultList.add(sRed18(redList, blue));
+                break;
+            case SH19:
+                resultList.add(sRed19(redList, blue));
+                break;
+            case SH20:
+                resultList.add(sRed20(redList, blue));
+                break;
+            case SH21:
+                resultList.add(sRed21(redList, blue));
+                break;
+            case SH22:
+                resultList.add(sRed22(redList, blue));
+                break;
+            case SH23:
+                resultList.add(sRed23(blue));
+                break;
+            case SH24:
+                resultList.add(sRed24(blue));
+                break;
+            case SH25:
+                resultList.add(sRed25(blue));
+                break;
+            case SH26:
+                resultList.add(sRed26(blue));
+                break;
+            case SH27:
+                resultList.add(sRed27(redList, blue));
+                break;
+            case SH28:
+                resultList.add(sRed28(redList));
+                break;
+            case SH29:
+                resultList.add(sRed29(redList, blue));
+                break;
+            case SH30:
+                resultList.add(sRed30(redList));
+                break;
+            case SH31:
+                resultList.add(sRed31(redList));
+                break;
+
+            case SL1:
+                resultList = sBlue1(blue);
+                break;
+            case SL2:
+                resultList = sBlue2(blue);
+                break;
+            case SL3:
+                resultList = sBlue3(blue);
+                break;
+            case SL4:
+                resultList = sBlue4(blue, blue2);
+                break;
+            case SL5:
+                resultList = sBlue5(blue, blue2);
+                break;
+            case SL6:
+                resultList.add(sBlue6(blue, blue2));
+                break;
+            case SL7:
+                resultList.add(sBlue7(blue, blue2));
+                break;
+            case SL8:
+                resultList = sBlue8(blue);
+                break;
+            case SL9:
+                resultList = sBlue9(blue);
+                break;
+            case SL10:
+                resultList = sBlue10(blue);
+                break;
+            case SL11:
+                resultList = sBlue11(blue);
+                break;
+            case SL12:
+                resultList = sBlue12(blue);
+                break;
+        }
+        return resultList;
+    }
 
     /**
      * 杀红公式 1

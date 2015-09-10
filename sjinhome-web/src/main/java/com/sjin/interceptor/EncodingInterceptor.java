@@ -12,6 +12,7 @@ import java.io.UnsupportedEncodingException;
  * @author: guanshj QQ: 928990049
  */
 public class EncodingInterceptor implements Interceptor {
+
     @Override
     public void intercept(ActionInvocation actionInvocation) {
         try {

@@ -63,11 +63,11 @@ public class BaseConfig extends JFinalConfig {
         arp.addMapping("t_timeline_more", TimelineMore.class);
 
         arp.addMapping("t_doubleball_record", DoubleballRecord.class);
-        arp.addMapping("t_doubleball_record_feature", DoubleballRecordFeature.class);
+//        arp.addMapping("t_doubleball_record_feature", DoubleballRecordFeature.class);
 
         arp.addMapping("t_doubleball_conjecture", DoubleballConjecture.class);
         arp.addMapping("t_doubleball_rule", DoubleballRule.class);
-        arp.addMapping("t_doubleball_rule_analyze", DoubleballRuleAnalyze.class);
+//        arp.addMapping("t_doubleball_rule_analyze", DoubleballRuleAnalyze.class);
     }
 
     /**
