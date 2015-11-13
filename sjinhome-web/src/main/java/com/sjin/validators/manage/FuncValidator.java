@@ -35,6 +35,6 @@ public class FuncValidator extends Validator {
     @Override
     protected void handleError(Controller controller) {
 //        controller.keepModel(Func.class);
-        controller.renderJson(controller.getAttr("errorMsg"));
+        controller.renderJson((String) controller.getAttr("errorMsg"));
     }
 }
