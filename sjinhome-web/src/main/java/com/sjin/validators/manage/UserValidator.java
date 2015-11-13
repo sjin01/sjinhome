@@ -7,7 +7,7 @@ import com.sjin.constant.SysConstant;
 import com.sjin.model.manage.User;
 
 /**
- * Description: 后台验证 用户表
+ * Description: 后台验证 用户表   验证器
  * 创建日期: 4/1  15:12
  *
  * @author: guanshj QQ: 928990049

@@ -10,10 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Title :盛通-- 临澧教育局平台
- * Description:
+ * Description:   功能菜单 验证器
  * 创建日期: 5/28  11:08
- *
  * @author: guanshj QQ: 928990049
  */
 public class FuncValidator extends Validator {

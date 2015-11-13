@@ -6,7 +6,7 @@ import com.jfinal.core.ActionInvocation;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Description:
+ * Description:  总拦截器
  * 创建日期: 5/5  11:05
  *
  * @author: guanshj QQ: 928990049
