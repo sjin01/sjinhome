@@ -1,6 +1,5 @@
 package com.sjin.controllers.manage.ssq;
 
-import com.jfinal.core.Controller;
 import com.sjin.base.BaseController;
 import com.sjin.constant.DataTableParam;
 import com.sjin.constant.SysConstant;
@@ -8,7 +7,6 @@ import com.sjin.constant.doubleball.DoubleBallConstant;
 import com.sjin.model.doubleball.DoubleballRecord;
 import com.sjin.services.manage.sqq.DoubleballRecordService;
 import com.sjin.vo.doubleball.DoubleBallDto;
-import org.apache.commons.lang.StringUtils;
 
 /**
  * Description:   双色球分析  -----  开奖记录

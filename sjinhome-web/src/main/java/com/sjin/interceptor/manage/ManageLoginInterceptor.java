@@ -3,7 +3,6 @@ package com.sjin.interceptor.manage;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
-import com.jfinal.core.JFinal;
 import com.sjin.constant.SysConstant;
 import com.sjin.enums.UserTypeEnum;
 import com.sjin.model.manage.User;

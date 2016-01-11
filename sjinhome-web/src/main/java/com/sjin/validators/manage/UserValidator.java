@@ -3,7 +3,6 @@ package com.sjin.validators.manage;
 import com.jfinal.core.Controller;
 import com.jfinal.validate.Validator;
 import com.mysql.jdbc.StringUtils;
-import com.sjin.constant.SysConstant;
 import com.sjin.model.manage.User;
 
 /**

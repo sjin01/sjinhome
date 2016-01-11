@@ -3,7 +3,6 @@ package com.sjin.vo;
 import java.util.List;
 
 /**
- * Title :www.hunanst.net
  * Description:
  * 创建日期: 6/11  15:54
  *

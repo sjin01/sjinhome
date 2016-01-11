@@ -1,6 +1,5 @@
 package com.sjin.model.doubleball;
 
-import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 

@@ -7,10 +7,7 @@ import com.sjin.constant.SysConstant;
 import com.sjin.interceptor.manage.ManageLoginInterceptor;
 import com.sjin.model.manage.UserGroup;
 
-import java.util.Map;
-
 /**
- * Title :www.hunanst.net
  * Description:  用户组 管理
  * 创建日期: 6/6  16:30
  *

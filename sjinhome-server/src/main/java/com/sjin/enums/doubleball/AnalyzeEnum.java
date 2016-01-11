@@ -2,7 +2,7 @@ package com.sjin.enums.doubleball;
 
 /**
  * @Description :  双色球分析规则枚举
- * @Author : guanshj | 928990049 | shijing.guan@china.zhaogang.com
+ * @Author : guanshj | 928990049
  * @Date : 2015/9/9
  */
 public enum AnalyzeEnum {
@@ -58,7 +58,7 @@ public enum AnalyzeEnum {
     private String title;   // 分析规则标题
     private String txt;     // 分析规则解释
 
-    private AnalyzeEnum(Integer code,String title,String txt){
+    AnalyzeEnum(Integer code,String title,String txt){
         this.code = code;
         this.title = title;
         this.txt = txt;

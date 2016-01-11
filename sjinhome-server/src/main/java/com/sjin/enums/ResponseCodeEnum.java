@@ -1,5 +1,10 @@
 package com.sjin.enums;
 
+/**
+ * Description: ResponseCode 枚举
+ * 创建日期: 16-1-11  12:04
+ * @author: guanshj QQ: 928990049
+ */
 public enum ResponseCodeEnum {
 	
 	AJAX_SUCCESS(200, "请求成功"),
@@ -16,7 +21,7 @@ public enum ResponseCodeEnum {
 	private int code;
     private String message;
 	
-	private ResponseCodeEnum(int code, String message) {
+	ResponseCodeEnum(int code, String message) {
         this.code = code;
         this.message = message;
     }

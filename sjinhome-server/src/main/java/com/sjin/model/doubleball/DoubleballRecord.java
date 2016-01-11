@@ -4,12 +4,9 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
-import com.sjin.constant.doubleball.DoubleBallConstant;
 import com.sjin.enums.doubleball.BallType;
-import com.sjin.vo.doubleball.DoubleBallDto;
 import org.apache.commons.lang.StringUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

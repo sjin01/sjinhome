@@ -1,7 +1,6 @@
 package com.sjin.controllers.manage;
 
 import com.jfinal.aop.Before;
-import com.jfinal.core.Controller;
 import com.mysql.jdbc.StringUtils;
 import com.sjin.base.BaseController;
 import com.sjin.constant.SysConstant;
@@ -10,13 +9,10 @@ import com.sjin.model.manage.User;
 import com.sjin.validators.manage.UserValidator;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Description: 用户模块控制器
  * 创建日期: 4/1  10:28
- *
  * @author: guanshj QQ: 928990049
  */
 @Before(ManageLoginInterceptor.class)

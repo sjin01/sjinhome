@@ -6,7 +6,6 @@ import com.sjin.interceptor.manage.NodeInterceptor;
 import com.sjin.model.manage.Func;
 
 /**
- * Title :盛通-- 临澧教育局平台
  * Description:
  * 创建日期: 5/6  14:11
  *

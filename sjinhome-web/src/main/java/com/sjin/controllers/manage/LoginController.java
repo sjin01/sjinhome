@@ -4,7 +4,6 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.render.FreeMarkerRender;
 import com.sjin.constant.SysConstant;
-import com.sjin.model.manage.User;
 import com.sjin.validators.manage.LoginValidator;
 
 /**

@@ -1,12 +1,8 @@
 package com.sjin.constant;
 
-import com.jfinal.config.Constants;
-
 /**
- * Title :盛通-- 临澧教育局平台
- * Description:
+ * Description: 系统常亮
  * 创建日期: 4/24  9:33
- *
  * @author: guanshj QQ: 928990049
  */
 public class SysConstant  {

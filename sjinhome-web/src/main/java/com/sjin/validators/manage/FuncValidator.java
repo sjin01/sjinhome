@@ -2,12 +2,6 @@ package com.sjin.validators.manage;
 
 import com.jfinal.core.Controller;
 import com.jfinal.validate.Validator;
-import com.mysql.jdbc.StringUtils;
-import com.sjin.enums.ResponseCodeEnum;
-import com.sjin.model.manage.Func;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Description:   功能菜单 验证器

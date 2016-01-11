@@ -3,7 +3,6 @@ package com.sjin.enums.doubleball;
 /**
  * 双色球类似枚举
  * 创建日期: 14-7-14  上午10:17
- *
  * @author: guanshj QQ: 928990049
  */
 public enum BallType {
@@ -17,13 +16,12 @@ public enum BallType {
     RED("红球", 1),
     BLUE("蓝球", 2);
 
-
     // 成员变量
     private String name;
     private int code;
 
     // 构造方法
-    private BallType(String name, int code) {
+    BallType(String name, int code) {
         this.name = name;
         this.code = code;
     }

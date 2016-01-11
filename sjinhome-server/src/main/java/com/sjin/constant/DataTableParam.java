@@ -1,10 +1,8 @@
 package com.sjin.constant;
 
 /**
- * Title :www.hunanst.net
- * Description:
+ * Description:  datatable 分页参数 封装类
  * 创建日期: 7/8  16:35
- *
  * @author: guanshj QQ: 928990049
  */
 public class DataTableParam {

@@ -1,10 +1,8 @@
 package com.sjin.enums;
 
 /**
- * Title :盛通-- 临澧教育局平台
  * Description:
  * 创建日期: 4/24  9:48
- *
  * @author: guanshj QQ: 928990049
  */
 public enum  UserTypeEnum {

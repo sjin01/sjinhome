@@ -1,9 +1,7 @@
 package com.sjin.constant.doubleball;
 
 /**
-
  * 创建日期: 14-7-15  下午12:00
- *
  * @author: guanshj QQ: 928990049
  */
 public class DoubleBallConstant {

@@ -10,7 +10,6 @@ import java.util.Map;
 /**
  * Description:  控制器 公共内容
  * 创建日期: 5/6  9:40
- *
  * @author: guanshj QQ: 928990049
  */
 public class BaseController extends Controller{
