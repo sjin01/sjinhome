@@ -39,7 +39,7 @@ public class Func extends Model<Func>{
      * @return
      */
     public List<Record> getFuncByPid (int pid ,int type) {
-        return Db.find("select * from test.t_sys_func where pid = " + pid + " and type =" + type + " order by sort ");
+        return Db.find("select * from t_sys_func where pid = " + pid + " and type =" + type + " order by sort ");
     }
 
     /**
@@ -63,7 +63,7 @@ public class Func extends Model<Func>{
      * @return
      */
     public Func getFuncByPath (String path){
-        List<Func> list = dao.find("select * from test.t_sys_func where path like '%" + path + "%' ");
+        List<Func> list = dao.find("select * from t_sys_func where path like '%" + path + "%' ");
         if(list!=null && !list.isEmpty()) return list.get(0);
         return null;
     }

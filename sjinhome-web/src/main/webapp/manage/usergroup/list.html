@@ -64,8 +64,8 @@
                             </td>
                             <td><a href="#">${ss.name!}</a></td>
                             <td>
-                                <#if ss.status==1>正常
-                                <#elseif ss.status==0>禁用
+                                <#if ss.status==true>正常
+                                <#elseif ss.status==false>禁用
                                 </#if>
                             </td>
                             <td>
