@@ -1,9 +1,6 @@
 package com.sjin.vo.doubleball;
 
-import com.jfinal.plugin.activerecord.Model;
-
 /**
- * Title :www.hunanst.net
  * Description:
  * 创建日期: 7/6  16:27
  *

@@ -1,7 +1,7 @@
 package com.sjin.interceptor.manage;
 
 import com.jfinal.aop.Interceptor;
-import com.jfinal.core.ActionInvocation;
+import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 import com.sjin.constant.SysConstant;
 import com.sjin.enums.UserTypeEnum;
@@ -17,12 +17,12 @@ import com.sjin.model.manage.User;
 public class ManageLoginInterceptor implements Interceptor {
 
     @Override
-    public void intercept(ActionInvocation ai) {
+    public void intercept(Invocation invocation) {
         /*System.out.println("Before invoking " + ai.getActionKey());
         System.out.println(JFinal.me().getServletContext().getAttribute("base"));*/
 
         // 从 session 拿登陆用户
-        Controller controller = ai.getController();
+        Controller controller = invocation.getController();
         User user = controller.getSessionAttr(SysConstant.SESSIONKEY_LOGIN_USER);
 
         if(user == null){
@@ -42,7 +42,7 @@ public class ManageLoginInterceptor implements Interceptor {
             }
         }
 
-        ai.invoke();
+        invocation.invoke();
         /*System.out.println("After invoking " + ai.getActionKey());
         System.out.println(JFinal.me().getServletContext().getAttribute("base"));*/
     }

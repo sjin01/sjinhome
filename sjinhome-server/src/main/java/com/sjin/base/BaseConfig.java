@@ -1,7 +1,6 @@
 package com.sjin.base;
 
 import com.jfinal.config.*;
-import com.jfinal.i18n.I18N;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.sjin.model.doubleball.*;

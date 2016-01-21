@@ -1,7 +1,7 @@
 package com.sjin.model.doubleball;
 
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
+import com.sjin.model.base.BaseDoubleballRecordFeature;
 
 /**
  * Description:   t_doubleball_record_feature
@@ -25,7 +25,7 @@ import com.jfinal.plugin.activerecord.Page;
  *
  * @author: guanshj QQ: 928990049
  */
-public class DoubleballRecordFeature extends Model<DoubleballRecordFeature> {
+public class DoubleballRecordFeature extends BaseDoubleballRecordFeature<DoubleballRecordFeature> {
 
     public static final DoubleballRecordFeature dao = new DoubleballRecordFeature();
 

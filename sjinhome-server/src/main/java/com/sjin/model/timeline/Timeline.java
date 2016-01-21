@@ -1,7 +1,7 @@
 package com.sjin.model.timeline;
 
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
+import com.sjin.model.base.BaseTimeline;
 
 import java.util.List;
 
@@ -11,18 +11,18 @@ import java.util.List;
  *
  *  t_timeline
  *
- ID                   INT NOT NULL AUTO_INCREMENT,
- TYPE                 INT COMMENT '类型：1：sjin的成长；2：sjin于dcc；99：用户记录',
- YEAR                 VARCHAR(45),
- DATE                 VARCHAR(45),
- TXT                  VARCHAR(255),
- VERSION              VARCHAR(45),
- PRIMARY KEY (ID)
+ id                   int not null auto_increment,
+ type                 int comment '类型：1：sjin的成长；2：sjin于dcc；99：用户记录',
+ year                 varchar(45),
+ date                 varchar(45),
+ txt                  varchar(255),
+ version              varchar(45),
+ primary key (id)
 
  *
  * @author: guanshj QQ: 928990049
  */
-public class Timeline extends Model<Timeline> {
+public class Timeline extends BaseTimeline<Timeline> {
 
     public static final Timeline dao = new Timeline();
 

@@ -1,9 +1,9 @@
 package com.sjin.model.manage;
 
 import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
+import com.sjin.model.base.BaseSysFunc;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author: guanshj QQ: 928990049
  */
-public class Func extends Model<Func>{
+public class Func extends BaseSysFunc<Func> {
 
     public static final Func dao = new Func();
 

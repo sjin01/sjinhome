@@ -1,7 +1,7 @@
 package com.sjin.interceptor;
 
 import com.jfinal.aop.Interceptor;
-import com.jfinal.core.ActionInvocation;
+import com.jfinal.aop.Invocation;
 
 import java.io.UnsupportedEncodingException;
 
@@ -14,12 +14,12 @@ import java.io.UnsupportedEncodingException;
 public class EncodingInterceptor implements Interceptor {
 
     @Override
-    public void intercept(ActionInvocation actionInvocation) {
+    public void intercept(Invocation invocation) {
         try {
-            actionInvocation.getController().getRequest().setCharacterEncoding("UTF-8");
+            invocation.getController().getRequest().setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        actionInvocation.invoke();
+        invocation.invoke();
     }
 }

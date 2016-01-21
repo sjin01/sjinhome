@@ -1,7 +1,7 @@
 package com.sjin.model.timeline;
 
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
+import com.sjin.model.base.BaseTimelineMore;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ import java.util.List;
  *
  * t_timeline_more
  *
- ID                   INT NOT NULL AUTO_INCREMENT,
- TID                  INT,
- TXT                  VARCHAR(255),
- SORT                 INT,
+ id                   int not null auto_increment,
+ tid                  int,
+ txt                  varchar(255),
+ sort                 int,
 
  * @author: guanshj QQ: 928990049
  */
-public class TimelineMore extends Model<TimelineMore> {
+public class TimelineMore extends BaseTimelineMore<TimelineMore> {
 
     public static final TimelineMore dao = new TimelineMore();
     public Page<TimelineMore> paginate(int pageNumber, int pageSize) {

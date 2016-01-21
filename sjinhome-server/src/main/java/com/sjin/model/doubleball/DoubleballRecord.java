@@ -1,10 +1,10 @@
 package com.sjin.model.doubleball;
 
 import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import com.sjin.enums.doubleball.BallType;
+import com.sjin.model.base.BaseDoubleballRecord;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 
  * @author: guanshj QQ: 928990049
  */
-public class DoubleballRecord extends Model<DoubleballRecord> {
+public class DoubleballRecord extends BaseDoubleballRecord<DoubleballRecord> {
 
     public static final DoubleballRecord dao = new DoubleballRecord();
 

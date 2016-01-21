@@ -1,9 +1,9 @@
 package com.sjin.model.manage;
 
 import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.mysql.jdbc.StringUtils;
+import com.sjin.model.base.BaseSysUser;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ import java.util.List;
  *
  */
 
-public class User extends Model<User> {
+public class User extends BaseSysUser<User> {
     public static final User dao = new User();
     /**
      * 所有 sql 写在 Model 或 Service 中，不要写在 Controller 中，养成好习惯，有利于大型项目的开发与维护

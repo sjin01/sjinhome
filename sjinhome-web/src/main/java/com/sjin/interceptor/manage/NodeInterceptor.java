@@ -1,7 +1,7 @@
 package com.sjin.interceptor.manage;
 
 import com.jfinal.aop.Interceptor;
-import com.jfinal.core.ActionInvocation;
+import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 import com.jfinal.core.JFinal;
 import com.sjin.model.manage.Func;
@@ -15,9 +15,9 @@ import com.sjin.model.manage.Func;
 public class NodeInterceptor implements Interceptor {
 
     @Override
-    public void intercept(ActionInvocation actionInvocation) {
+    public void intercept(Invocation invocation) {
 
-        Controller controller = actionInvocation.getController();
+        Controller controller = invocation.getController();
 
         //  可以把这一段东西 丢到 拦截器里面去
         String pathname = controller.getPara("pathname");
@@ -38,6 +38,6 @@ public class NodeInterceptor implements Interceptor {
             controller.setAttr("funcc" , func);
         }
 
-        actionInvocation.invoke();
+        invocation.invoke();
     }
 }

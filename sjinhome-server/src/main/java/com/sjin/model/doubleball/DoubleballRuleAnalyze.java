@@ -1,7 +1,7 @@
 package com.sjin.model.doubleball;
 
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
+import com.sjin.model.base.BaseDoubleballRuleAnalyze;
 
 /**
  * Description:  t_doubleball_rule_analyze
@@ -15,7 +15,7 @@ import com.jfinal.plugin.activerecord.Page;
 
  * @author: guanshj QQ: 928990049
  */
-public class DoubleballRuleAnalyze extends Model<DoubleballRuleAnalyze> {
+public class DoubleballRuleAnalyze extends BaseDoubleballRuleAnalyze<DoubleballRuleAnalyze> {
 
     public static final DoubleballRuleAnalyze dao = new DoubleballRuleAnalyze();
 

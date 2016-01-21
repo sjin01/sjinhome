@@ -1,9 +1,9 @@
 package com.sjin.model.manage;
 
 import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.mysql.jdbc.StringUtils;
+import com.sjin.model.base.BaseSysUserGroup;
 
 /**
  * 用户组 t_sys_user_group
@@ -16,7 +16,7 @@ import com.mysql.jdbc.StringUtils;
  *
  * @author: guanshj QQ: 928990049
  */
-public class UserGroup extends Model<UserGroup>{
+public class UserGroup extends BaseSysUserGroup<UserGroup> {
 
     public static final UserGroup dao = new UserGroup();
     /**
